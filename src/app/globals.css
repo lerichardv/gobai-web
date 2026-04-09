@@ -1,26 +1,192 @@
 @import "tailwindcss";
 
+@font-face {
+	font-family: "Gurvaco";
+	src: url("/fonts/gurvaco-regular.woff2");
+}
+
+@font-face {
+	font-family: "Gilroy";
+	font-weight: 500;
+	src: url("/fonts/Gilroy-Medium.woff2");
+}
+
+@font-face {
+	font-family: "Gilroy";
+	font-weight: 800;
+	src: url("/fonts/Gilroy-ExtraBold.woff2");
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
+	--font-display: 'Gurvaco', sans-serif;
+	--font-body: 'Gilroy', sans-serif;
+	--color-gobai-blue-dark: #003D66;
+	--color-gobai-blue: #005AA6;
+	--color-gobai-blue-light: #0E86D8;
+	--color-gobai-blue-lighten: #63C6FC;
+	--color-gobai-blue-bright: #B3E8FF;
+	--color-gobai-turquoise-dark: #1FAAA3;
+	--color-gobai-turquoise: #3FD1CD;
+	--color-gobai-turquoise-light: #77E8E3;
+	--color-gobai-turquoise-lighten: #C0FCF7;
+	--color-gobai-cyan-dark: #07BFD8;
+	--color-gobai-cyan: #62E4FF;
+	--color-gobai-cyan-light: #AEF9FF;
+	--color-gobai-gray: #CCCCCC;
+	--color-gobai-gray-light: #F5F5F5;
+	--color-gobai-gray-lighten: #FCFCFC;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #ffffff;
+		--foreground: #ffffff;
+	}
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-body), Arial, Helvetica, sans-serif;
+}
+
+/* Custom animations and utilities for hero section */
+@keyframes float {
+
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-20px);
+	}
+}
+
+@keyframes pulse-glow {
+
+	0%,
+	100% {
+		opacity: 0.7;
+		transform: scale(1);
+	}
+
+	50% {
+		opacity: 1;
+		transform: scale(1.05);
+	}
+}
+
+@keyframes gradient-shift {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/* Floating animations with different variations for performance */
+@keyframes float-slow {
+
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-30px);
+	}
+}
+
+@keyframes float-medium {
+
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-25px);
+	}
+}
+
+@keyframes float-fast {
+
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-20px);
+	}
+}
+
+/* Rotation animation for decorative elements */
+@keyframes rotate-slow {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Pulse animation for elements */
+@keyframes pulse-scale {
+
+	0%,
+	100% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.1);
+	}
+}
+
+.animate-float {
+	animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+	animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+	animation: gradient-shift 15s ease infinite;
+	background-size: 400% 400%;
+}
+
+/* Glass morphism effect */
+.glass {
+	backdrop-filter: blur(10px);
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Enhanced text shadows for better contrast */
+.text-shadow-lg {
+	text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Smooth scroll behavior */
+html {
+	scroll-behavior: smooth;
 }

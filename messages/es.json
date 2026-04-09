@@ -1,0 +1,17 @@
+{
+  "Navbar": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "successCases": "Casos de éxito",
+    "contact": "Contacto",
+    "campaigns": "Campañas Disruptivas",
+    "governments": "Gobiernos y Políticas",
+    "start": "Comenzar"
+  },
+  "Hero": {
+    "title": "Gobernar, liderar y vender mejor Con datos reales",
+    "subtitle": "Desbloquea insights, automatiza procesos e impulsa el crecimiento con nuestra plataforma inteligente diseñada para el futuro.",
+    "ctaStart": "Comenzar Hoy",
+    "ctaDemo": "Ver Demo"
+  }
+}

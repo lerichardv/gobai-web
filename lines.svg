@@ -1,0 +1,11 @@
+<svg>
+          <defs>
+            <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#62E4FF" stopOpacity="0.3"/>
+              <stop offset="100%" stopColor="#3FD1CD" stopOpacity="0.1"/>
+            </linearGradient>
+          </defs>
+          <path d="M100 100 Q300 200 600 150 T1000 300" stroke="url(#connectionGradient)" strokeWidth="1" fill="none" opacity="0.6"/>
+          <path d="M200 400 Q500 300 800 450 T1200 200" stroke="url(#connectionGradient)" strokeWidth="1" fill="none" opacity="0.4"/>
+          <path d="M50 600 Q400 500 700 600 T1100 550" stroke="url(#connectionGradient)" strokeWidth="1" fill="none" opacity="0.5"/>
+        </svg>
