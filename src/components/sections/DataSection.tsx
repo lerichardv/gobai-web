@@ -5,10 +5,12 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { RiBarChartBoxLine, RiTargetLine, RiGovernmentLine, RiLockLine, RiFolderShieldLine, RiAwardLine, RiTrophyLine, RiChatCheckLine } from '@remixicon/react';
+import { useTranslations } from 'next-intl';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function DataSection() {
+	const t = useTranslations('Data');
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -166,22 +168,22 @@ export default function DataSection() {
 
 	const dataServices = [
 		{
-			title: 'Data Opinión Pública',
-			description: 'Análisis profundo del sentimiento ciudadano a través de técnicas avanzadas de IA para comprender las tendencias de opinión.',
+			title: t('service1Title'),
+			description: t('service1Desc'),
 			image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80',
 			icon: <RiBarChartBoxLine />,
 			color: 'var(--color-gobai-cyan)',
 		},
 		{
-			title: 'Data para la Toma de Decisiones',
-			description: 'Información procesada y estructurada que permite decisiones estratégicas basadas en datos verificables y análisis predictivo.',
+			title: t('service2Title'),
+			description: t('service2Desc'),
 			image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
 			icon: <RiTargetLine />,
 			color: 'var(--color-gobai-turquoise)',
 		},
 		{
-			title: 'Data de Campañas Políticas',
-			description: 'Métricas especializadas y análisis de rendimiento para optimizar estrategias de comunicación y alcance electoral.',
+			title: t('service3Title'),
+			description: t('service3Desc'),
 			image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80',
 			icon: <RiGovernmentLine />,
 			color: 'var(--color-gobai-blue-bright)',
@@ -237,15 +239,14 @@ export default function DataSection() {
 							textShadow: '0 0 40px rgba(0, 0, 0, 0.1)',
 						}}
 					>
-						Tus datos están en buenas manos
+						{t('title')}
 					</h2>
 
 					<p
 						ref={subtitleRef}
 						className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-light"
 					>
-						Inteligencia Artificial al servicio de la incidencia política.
-						Innovación y estrategia para liderar el cambio
+						{t('subtitle')}
 					</p>
 				</div>
 
@@ -279,7 +280,7 @@ export default function DataSection() {
 							>
 								<div className="text-center">
 									<div className="mb-2 text-white" style={{ fontSize: '3rem' }}><RiLockLine className='mx-auto' /></div>
-									<div className="text-white font-semibold text-sm">Seguro</div>
+									<div className="text-white font-semibold text-sm">{t('secure')}</div>
 									<div className="text-white/80 text-xs">100%</div>
 								</div>
 							</div>
@@ -296,7 +297,7 @@ export default function DataSection() {
 										<div className="h-2 rounded-full overflow-hidden" style={{ background: 'rgba(255, 255, 255, 0.2)' }}>
 											<div
 												ref={progressBarRef}
-												className="h-full rounded-full transition-all duration-300"
+												className="h-full rounded-full"
 												style={{
 													background: 'linear-gradient(90deg, var(--color-gobai-cyan-light), var(--color-gobai-turquoise-light))',
 													width: '45%',
@@ -329,8 +330,8 @@ export default function DataSection() {
 									<RiFolderShieldLine className="text-white" style={{ fontSize: '2rem' }} />
 								</div>
 								<div>
-									<h3 className="text-xl font-bold text-gray-800 mb-2">Encriptación Avanzada</h3>
-									<p className="text-gray-600">Protección de extremo a extremo con estándares militares</p>
+									<h3 className="text-xl font-bold text-gray-800 mb-2">{t('feature1Title')}</h3>
+									<p className="text-gray-600">{t('feature1Desc')}</p>
 								</div>
 							</div>
 
@@ -346,8 +347,8 @@ export default function DataSection() {
 									<RiAwardLine className="text-white" style={{ fontSize: '2rem' }} />
 								</div>
 								<div>
-									<h3 className="text-xl font-bold text-gray-800 mb-2">Cumplimiento GDPR</h3>
-									<p className="text-gray-600">Total conformidad con regulaciones internacionales</p>
+									<h3 className="text-xl font-bold text-gray-800 mb-2">{t('feature2Title')}</h3>
+									<p className="text-gray-600">{t('feature2Desc')}</p>
 								</div>
 							</div>
 
@@ -363,8 +364,8 @@ export default function DataSection() {
 									<RiChatCheckLine className="text-white" style={{ fontSize: '2rem' }} />
 								</div>
 								<div>
-									<h3 className="text-xl font-bold text-gray-800 mb-2">Auditoria Continua</h3>
-									<p className="text-gray-600">Monitoreo 24/7 y certificaciones actualizadas</p>
+									<h3 className="text-xl font-bold text-gray-800 mb-2">{t('feature3Title')}</h3>
+									<p className="text-gray-600">{t('feature3Desc')}</p>
 								</div>
 							</div>
 						</div>
@@ -393,7 +394,7 @@ export default function DataSection() {
 											src={service.image}
 											alt={service.title}
 											fill
-											className="object-cover transition-transform duration-700 group-hover:scale-110"
+											className="object-cover group-hover:scale-110"
 											style={{
 												filter: 'brightness(0.8) contrast(1.1)',
 											}}
@@ -408,7 +409,7 @@ export default function DataSection() {
 										{/* Service Icon */}
 										<div className="absolute top-4 left-4">
 											<div
-												className="w-16 h-16 rounded-2xl flex items-center justify-center backdrop-blur-lg transition-all duration-300 group-hover:scale-110"
+												className="w-16 h-16 rounded-2xl flex items-center justify-center backdrop-blur-lg group-hover:scale-110"
 												style={{
 													background: 'rgba(255, 255, 255, 0.25)',
 													border: '1px solid rgba(255, 255, 255, 0.3)',
@@ -423,10 +424,10 @@ export default function DataSection() {
 
 									{/* Card Content */}
 									<div className="p-6">
-										<h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-gray-900 transition-colors duration-300">
+										<h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-gray-900">
 											{service.title}
 										</h3>
-										<p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+										<p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700">
 											{service.description}
 										</p>
 
@@ -434,7 +435,7 @@ export default function DataSection() {
 										<div className="mt-4">
 											<div className="h-1 rounded-full overflow-hidden" style={{ background: 'rgba(0, 0, 0, 0.1)' }}>
 												<div
-													className="h-full rounded-full transition-all duration-700 group-hover:animate-pulse"
+													className="h-full rounded-full group-hover:animate-pulse"
 													style={{
 														background: service.color,
 														width: `${85 + index * 5}%`
@@ -447,7 +448,7 @@ export default function DataSection() {
 
 									{/* Hover Gradient Overlay */}
 									<div
-										className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none rounded-3xl"
+										className="absolute inset-0 opacity-0 group-hover:opacity-10 pointer-events-none rounded-3xl"
 										style={{
 											background: `linear-gradient(135deg, ${service.color} 0%, transparent 100%)`,
 										}}

@@ -5,10 +5,12 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { RiTimeLine, RiPuzzleLine, RiMedalLine, RiLineChartLine } from '@remixicon/react';
+import { useTranslations } from 'next-intl';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function FeaturesSection() {
+	const t = useTranslations('Features');
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -118,29 +120,29 @@ export default function FeaturesSection() {
 
 	const features = [
 		{
-			title: 'Ahorra Tiempo y Recursos',
-			description: 'Automatiza procesos complejos y reduce significativamente el tiempo invertido en análisis políticos, permitiendo que tu equipo se enfoque en la estrategia.',
+			title: t('item1Title'),
+			description: t('item1Desc'),
 			image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
 			icon: <RiTimeLine />,
 			gradient: 'linear-gradient(135deg, var(--color-gobai-cyan-dark) 0%, var(--color-gobai-turquoise) 100%)',
 		},
 		{
-			title: 'Integración Sencilla',
-			description: 'Implementa nuestras soluciones de IA sin complicaciones técnicas. Compatible con tus sistemas existentes y fácil de usar desde el primer día.',
+			title: t('item2Title'),
+			description: t('item2Desc'),
 			image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80',
 			icon: <RiPuzzleLine />,
 			gradient: 'linear-gradient(135deg, var(--color-gobai-turquoise-dark) 0%, var(--color-gobai-cyan) 100%)',
 		},
 		{
-			title: 'Calidad Garantizada',
-			description: 'Resultados precisos y confiables respaldados por algoritmos avanzados y años de experiencia en inteligencia artificial aplicada.',
+			title: t('item3Title'),
+			description: t('item3Desc'),
 			image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80',
 			icon: <RiMedalLine />,
 			gradient: 'linear-gradient(135deg, var(--color-gobai-blue-light) 0%, var(--color-gobai-turquoise-light) 100%)',
 		},
 		{
-			title: 'Escalabilidad',
-			description: 'Crece sin límites. Nuestras soluciones se adaptan desde proyectos locales hasta campañas nacionales, manteniendo siempre el máximo rendimiento.',
+			title: t('item4Title'),
+			description: t('item4Desc'),
 			image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
 			icon: <RiLineChartLine />,
 			gradient: 'linear-gradient(135deg, var(--color-gobai-blue-dark) 0%, var(--color-gobai-cyan-dark) 100%)',
@@ -318,7 +320,7 @@ export default function FeaturesSection() {
 							textShadow: '0 0 40px rgba(179, 232, 255, 0.3)',
 						}}
 					>
-						Explora el futuro de la política con inteligencia artificial
+						{t('title')}
 					</h2>
 
 					<p
@@ -328,9 +330,7 @@ export default function FeaturesSection() {
 							textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
 						}}
 					>
-						Inteligencia Artificial al servicio de la incidencia política.
-						Innovación y estrategia para liderar el cambio y transformar la manera
-						en que interactuamos con la sociedad.
+						{t('subtitle')}
 					</p>
 				</div>
 
@@ -435,7 +435,7 @@ export default function FeaturesSection() {
 							textShadow: '0 0 40px rgba(179, 232, 255, 0.3)',
 						}}
 					>
-						Nuestros clientes
+						{t('clientsTitle')}
 					</h2>
 				</div>
 
@@ -495,7 +495,10 @@ export default function FeaturesSection() {
 				{/* Trust indicators */}
 				<div ref={trustIndicatorRef} className="text-center mt-16">
 					<p className="text-xl md:text-2xl text-white font-light leading-relaxed">
-						Más de <span className="font-semibold" style={{ color: 'var(--color-gobai-turquoise-light)' }}>50+ empresas</span> confían en GOBAI
+						{t.rich('trust', {
+							count: t('count'),
+							bold: (chunks) => <span className="font-semibold" style={{ color: 'var(--color-gobai-turquoise-light)' }}>{chunks}</span>
+						})}
 					</p>
 				</div>
 			</div>

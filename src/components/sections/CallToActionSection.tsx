@@ -3,14 +3,16 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslations } from 'next-intl';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CallToActionSection() {
+	const t = useTranslations('CTA');
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	const subtitleRef = useRef<HTMLHeadingElement>(null);
-	const descriptionRef = useRef<HTMLParagraphElement>(null);
+	const descriptionRef = useRef<HTMLDivElement>(null);
 	const finalTextRef = useRef<HTMLParagraphElement>(null);
 	const ctaButtonRef = useRef<HTMLButtonElement>(null);
 	const backgroundRef = useRef<HTMLDivElement>(null);
@@ -229,7 +231,7 @@ export default function CallToActionSection() {
 						filter: 'drop-shadow(0 0 30px rgba(179, 232, 255, 0.3))',
 					}}
 				>
-					¿Listo para el Futuro?
+					{t('title')}
 				</h2>
 
 				{/* Subtitle */}
@@ -240,27 +242,32 @@ export default function CallToActionSection() {
 						textShadow: '0 0 40px rgba(255, 255, 255, 0.2)',
 					}}
 				>
-					Confían en Nosotros
+					{t('subtitle')}
 				</h3>
 
 				{/* Description */}
-				<p
+				<div
 					ref={descriptionRef}
 					className="text-lg md:text3xl lg:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed font-light"
 					style={{
 						textShadow: '0 2px 20px rgba(0, 0, 0, 0.5)',
 					}}
 				>
-					Más de <span
-						className="font-bold"
-						style={{
-							color: 'var(--color-gobai-turquoise-light)',
-							textShadow: '0 0 20px rgba(31, 170, 163, 0.5)',
-						}}
-					>
-						50 empresas
-					</span> ya han revolucionado sus operaciones con nuestra tecnología.
-				</p>
+					{t.rich('description', {
+						count: t('count'),
+						bold: (chunks) => (
+							<span
+								className="font-bold"
+								style={{
+									color: 'var(--color-gobai-turquoise-light)',
+									textShadow: '0 0 20px rgba(31, 170, 163, 0.5)',
+								}}
+							>
+								{chunks}
+							</span>
+						)
+					})}
+				</div>
 
 				{/* Final Text */}
 				<p
@@ -274,7 +281,7 @@ export default function CallToActionSection() {
 						textShadow: '0 0 30px rgba(179, 232, 255, 0.3)',
 					}}
 				>
-					¡Es tu turno!
+					{t('final')}
 				</p>
 
 				{/* CTA Button */}
@@ -288,7 +295,7 @@ export default function CallToActionSection() {
 							border: '2px solid rgba(255, 255, 255, 0.2)',
 						}}
 					>
-						<span className="relative z-10">Comenzar Ahora</span>
+						<span className="relative z-10">{t('button')}</span>
 
 						{/* Button Glow Effect */}
 						<div
@@ -323,17 +330,17 @@ export default function CallToActionSection() {
 				<div className="mt-16 flex justify-center items-center space-x-8 text-white/70">
 					<div className="flex items-center space-x-2">
 						<div className="w-3 h-3 rounded-full animate-pulse" style={{ background: 'var(--color-gobai-cyan)' }}></div>
-						<span className="text-lg">Tecnología Probada</span>
+						<span className="text-lg">{t('stat1')}</span>
 					</div>
 					<div className="w-px h-8 bg-white/30"></div>
 					<div className="flex items-center space-x-2">
 						<div className="w-3 h-3 rounded-full animate-pulse" style={{ background: 'var(--color-gobai-turquoise)' }}></div>
-						<span className="text-lg">Resultados Garantizados</span>
+						<span className="text-lg">{t('stat2')}</span>
 					</div>
 					<div className="w-px h-8 bg-white/30"></div>
 					<div className="flex items-center space-x-2">
 						<div className="w-3 h-3 rounded-full animate-pulse" style={{ background: 'var(--color-gobai-blue-bright)' }}></div>
-						<span className="text-lg">Soporte 24/7</span>
+						<span className="text-lg">{t('stat3')}</span>
 					</div>
 				</div>
 			</div>

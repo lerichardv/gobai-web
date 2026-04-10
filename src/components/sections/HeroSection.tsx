@@ -141,38 +141,44 @@ export default function HeroSection() {
 				opacity: 1,
 				duration: 1.5,
 				ease: 'power3.out',
-			}, 1.2) // Nav appears in the "middle" of the sequence
+			}, 1.2)
 			.from(logoRef.current, {
 				scale: 0,
 				opacity: 0,
 				duration: 1,
 				ease: 'elastic.out(1, 0.5)',
 			}, 1.5)
-				.from(titleRef.current, {
-					y: 100,
-					opacity: 0,
-					duration: 1.2,
-					ease: 'power3.out',
-				}, 1.8)
-				.from(subtitleRef.current, {
-					y: 50,
-					opacity: 0,
-					duration: 1,
-					ease: 'power3.out',
-				}, 2.1)
-				.from(ctaRef.current, {
-					y: 30,
-					opacity: 0,
-					duration: 0.8,
-					ease: 'power3.out',
-				}, 2.4)
-				.from('.floating-element', {
-					scale: 0,
-					opacity: 0,
-					duration: 0.8,
-					ease: 'back.out(1.7)',
-					stagger: 0.15,
-				}, 2.0);
+			.from('.hero-badge', {
+				y: 20,
+				opacity: 0,
+				duration: 0.8,
+				ease: 'power3.out',
+			}, 1.6)
+			.from(titleRef.current, {
+				y: 100,
+				opacity: 0,
+				duration: 1.2,
+				ease: 'power3.out',
+			}, 1.8)
+			.from(subtitleRef.current, {
+				y: 50,
+				opacity: 0,
+				duration: 1,
+				ease: 'power3.out',
+			}, 2.1)
+			.from(ctaRef.current, {
+				y: 30,
+				opacity: 0,
+				duration: 0.8,
+				ease: 'power3.out',
+			}, 2.4)
+			.from('.floating-element', {
+				scale: 0,
+				opacity: 0,
+				duration: 0.8,
+				ease: 'back.out(1.7)',
+				stagger: 0.15,
+			}, 2.0);
 
 			// Logo subtle float animation
 			gsap.to(logoRef.current, {
@@ -182,10 +188,11 @@ export default function HeroSection() {
 				repeat: -1,
 				yoyo: true,
 			});
-
 		}, heroRef);
 
-		return () => ctx.revert();
+		return () => {
+			ctx.revert();
+		};
 	}, []);
 
 	return (
@@ -361,32 +368,13 @@ export default function HeroSection() {
 			</div>
 
 			{/* Main Content */}
-			<div className="relative z-10 text-center px-6 mx-auto min-w-[300px] lg:pt-[25vh] lg:pl-[55vw] pb-36 md:pb-0">
-				{/* Gobai Logo */}
-				<div
-					ref={logoRef}
-					className="mb-8 flex justify-center"
-				>
-					<div className="relative group">
-						{/* <Image
-              src="/img/gobai-blue-gradient-logo.png"
-              alt="Gobai - AI Business Intelligence"
-              width={450}
-              height={180}
-              priority
-              className="drop-shadow-2xl transition-all duration-300 group-hover:scale-105"
-              style={{
-                filter: 'drop-shadow(0 0 50px rgba(0, 0, 0, 1))',
-              }}
-            /> */}
-						{/* Glow effect behind logo */}
-						{/* <div 
-              className="absolute inset-0 -z-10 blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-300"
-              style={{
-                background: 'radial-gradient(ellipse, var(--color-gobai-cyan-light) 0%, var(--color-gobai-turquoise) 50%, transparent 70%)',
-              }}
-            /> */}
-					</div>
+			<div className="relative z-10 text-center lg:text-left px-6 mx-auto min-w-[300px] lg:pt-[25vh] lg:pl-[55vw] pb-36 md:pb-0">
+				{/* AI Badge */}
+				<div className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 lg:justify-start">
+					<div className="w-2 h-2 rounded-full bg-gobai-cyan animate-pulse" />
+					<span className="text-xs font-bold tracking-widest text-gobai-cyan uppercase">
+						{t('aiBadge')}
+					</span>
 				</div>
 
 				<h1
@@ -414,31 +402,25 @@ export default function HeroSection() {
 					{t('subtitle')}
 				</p>
 
-				<div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+				<div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center">
 					<button
-						className="group relative px-4 py-2 bg-white text-base font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+						className="group relative px-10 py-4 bg-white text-lg font-bold rounded-full overflow-hidden hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.2)]"
 						style={{
 							color: 'var(--color-gobai-blue-dark)',
-							boxShadow: '0 10px 40px rgba(255, 255, 255, 0.2)',
 						}}
 					>
 						<span className="relative z-10">{t('ctaStart')}</span>
 						<div
-							className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-							style={{
-								background: 'linear-gradient(135deg, var(--color-gobai-cyan-light), var(--color-gobai-turquoise-light))',
-							}}
+							className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-linear-to-r from-gobai-cyan-light to-gobai-turquoise-light"
 						/>
 					</button>
 
 					<button
-						className="group relative px-4 py-2 border-2 border-white text-white text-base font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-white/10 backdrop-blur"
-						style={{
-							textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
-						}}
+						className="group relative px-10 py-4 border-2 border-white/30 text-white text-lg font-bold rounded-full overflow-hidden hover:scale-105 hover:border-gobai-cyan hover:shadow-[0_10px_30px_rgba(98,228,255,0.2)] backdrop-blur-sm"
 					>
 						<span className="relative z-10">{t('ctaDemo')}</span>
-						<div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+						<div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-linear-to-r from-gobai-cyan to-gobai-turquoise" />
+						<div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full" />
 					</button>
 				</div>
 

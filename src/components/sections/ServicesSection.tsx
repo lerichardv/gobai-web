@@ -5,10 +5,12 @@ import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/all';
 import { RiRobot2Line, RiGovernmentLine, RiNewspaperLine } from '@remixicon/react';
+import { useTranslations } from 'next-intl';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ServicesSection() {
+	const t = useTranslations('Services');
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -85,22 +87,22 @@ export default function ServicesSection() {
 
 	const services = [
 		{
-			title: 'Campañas Disruptivas con AI',
-			description: 'Segmenta con precisión, analiza personalidad y sentimientos, e impulsa tus resultados con Candidatos Robots. Innovación y IA para optimizar tu estrategia.',
+			title: t('service1Title'),
+			description: t('service1Desc'),
 			icon: <RiRobot2Line size="30px" />,
 			gradient: 'linear-gradient(135deg, var(--color-gobai-cyan-dark) 0%, var(--color-gobai-turquoise) 100%)',
 			image: '/api/placeholder/400/300'
 		},
 		{
-			title: 'Gobiernos y políticas públicas',
-			description: 'Gobai revoluciona la participación ciudadana con tecnología digital. Impulsa ciudades inteligentes y crea políticas más efectivas con innovación y datos.',
+			title: t('service2Title'),
+			description: t('service2Desc'),
 			icon: <RiGovernmentLine size="30px" />,
 			gradient: 'linear-gradient(135deg, var(--color-gobai-turquoise-dark) 0%, var(--color-gobai-cyan) 100%)',
 			image: '/api/placeholder/400/300'
 		},
 		{
-			title: 'Crisis de opinión pública',
-			description: 'Gestiona crisis con segmentación precisa y análisis de riesgo en tiempo real. Responde con estrategia e inteligencia para proteger tu reputación con IA.',
+			title: t('service3Title'),
+			description: t('service3Desc'),
 			icon: <RiNewspaperLine size="30px" />,
 			gradient: 'linear-gradient(135deg, var(--color-gobai-blue-light) 0%, var(--color-gobai-turquoise-light) 100%)',
 			image: '/api/placeholder/400/300'
@@ -109,11 +111,37 @@ export default function ServicesSection() {
 
 	// Animated phrase letter-by-letter effect with GSAP ScrollTrigger using useGSAP
 	const phraseContainerRef = useRef<HTMLDivElement>(null);
-	const phrase = "Innovación que transforma el futuro de tu negocio";
+	const phrase = t('phrase');
 
 	useGSAP(() => {
 		const letters = gsap.utils.toArray(phraseContainerRef?.current?.children || []);
 
+		// Pin the container for 500px
+		ScrollTrigger.create({
+			trigger: "#animated-phrase-container",
+			pin: true,
+			start: "center center",
+			end: "+=500",
+			scrub: true,
+		});
+
+		// Parallax movement for background elements around the phrase
+		const parallaxElements = gsap.utils.toArray('.parallax-element');
+		parallaxElements.forEach((el: any) => {
+			const speed = parseFloat(el.getAttribute('data-speed') || '0.5');
+			gsap.to(el, {
+				y: -200 * speed,
+				ease: 'none',
+				scrollTrigger: {
+					trigger: "#animated-phrase-container",
+					start: "top bottom",
+					end: "bottom top",
+					scrub: true,
+				}
+			});
+		});
+
+		// Animate letters
 		gsap.fromTo(letters, {
 			y: 20,
 			opacity: 0,
@@ -126,12 +154,12 @@ export default function ServicesSection() {
 			ease: "power2.out",
 			stagger: 0.03,
 			scrollTrigger: {
-				trigger: phraseContainerRef.current,
-				start: "top 80%"
+				trigger: "#animated-phrase-container",
+				start: "top 40%",
 			}
 		});
 
-	});
+	}, { scope: sectionRef });
 
 	return (
 		<section
@@ -150,6 +178,76 @@ export default function ServicesSection() {
 
 			{/* Floating Background Elements */}
 			<div className="absolute inset-0 pointer-events-none">
+				{/* Parallax elements around the phrase area */}
+				<div className="parallax-element absolute top-[15%] left-[10%]" data-speed="0.2">
+					<svg width="40" height="40" viewBox="0 0 40 40" style={{ animation: 'rotate-slow 15s linear infinite' }}>
+						<rect x="10" y="10" width="20" height="20" fill="none" stroke="var(--color-gobai-cyan)" strokeWidth="1" opacity="0.2" />
+					</svg>
+				</div>
+				<div className="parallax-element absolute top-[20%] right-[15%]" data-speed="0.4">
+					<svg width="60" height="60" viewBox="0 0 60 60" style={{ animation: 'pulse-scale 4s ease-in-out infinite' }}>
+						<circle cx="30" cy="30" r="15" fill="var(--color-gobai-turquoise)" opacity="0.1" />
+					</svg>
+				</div>
+				<div className="parallax-element absolute top-[40%] left-[5%]" data-speed="0.6">
+					<svg width="100" height="100" viewBox="0 0 100 100" style={{ animation: 'float-medium 6s ease-in-out infinite' }}>
+						<path d="M50 20 L80 50 L50 80 L20 50 Z" fill="none" stroke="var(--color-gobai-blue-bright)" strokeWidth="1" opacity="0.15" />
+					</svg>
+				</div>
+				<div className="parallax-element absolute top-[60%] right-[10%]" data-speed="0.3">
+					<svg width="80" height="80" viewBox="0 0 80 80" style={{ animation: 'rotate-slow 25s linear infinite reverse' }}>
+						<circle cx="40" cy="40" r="30" fill="none" stroke="var(--color-gobai-cyan-dark)" strokeWidth="1" opacity="0.12" />
+						<circle cx="40" cy="40" r="5" fill="var(--color-gobai-cyan)" opacity="0.2" />
+					</svg>
+				</div>
+				<div className="parallax-element absolute bottom-[10%] left-[20%]" data-speed="0.5">
+					<svg width="50" height="50" viewBox="0 0 50 50" style={{ animation: 'float-slow 5s ease-in-out infinite' }}>
+						<rect x="5" y="5" width="40" height="40" rx="8" fill="var(--color-gobai-turquoise-light)" opacity="0.1" />
+					</svg>
+				</div>
+
+				{/* 10 Additional Parallax Elements */}
+				<div className="parallax-element absolute top-[10%] left-[45%]" data-speed="0.15">
+					<div className="w-2 h-2 rounded-full bg-gobai-cyan" style={{ opacity: 0.3, animation: 'pulse-scale 2s infinite' }} />
+				</div>
+				<div className="parallax-element absolute top-[30%] left-[25%]" data-speed="0.7">
+					<svg width="30" height="30" viewBox="0 0 30 30" style={{ animation: 'rotate-slow 10s linear infinite' }}>
+						<path d="M15 2 L28 15 L15 28 L2 15 Z" fill="none" stroke="var(--color-gobai-blue-bright)" strokeWidth="1" opacity="0.2" />
+					</svg>
+				</div>
+				<div className="parallax-element absolute top-[50%] right-[35%]" data-speed="0.25">
+					<div className="w-1.5 h-1.5 rounded-full bg-gobai-turquoise" style={{ opacity: 0.4, animation: 'pulse-scale 3s infinite 0.5s' }} />
+				</div>
+				<div className="parallax-element absolute bottom-[25%] right-[20%]" data-speed="0.8">
+					<svg width="120" height="120" viewBox="0 0 120 120" style={{ animation: 'float-medium 8s ease-in-out infinite' }}>
+						<circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-gobai-cyan-light)" strokeWidth="0.5" opacity="0.08" />
+					</svg>
+				</div>
+				<div className="parallax-element absolute top-[70%] left-[15%]" data-speed="0.45">
+					<div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gobai-cyan/20 to-transparent" style={{ animation: 'rotate-slow 40s linear infinite' }} />
+				</div>
+				<div className="parallax-element absolute top-[45%] left-[80%]" data-speed="0.35">
+					<svg width="40" height="40" viewBox="0 0 40 40" style={{ animation: 'pulse-scale 5s ease-in-out infinite 1s' }}>
+						<rect x="10" y="10" width="20" height="20" rx="4" fill="var(--color-gobai-blue-light)" opacity="0.15" />
+					</svg>
+				</div>
+				<div className="parallax-element absolute bottom-[15%] right-[45%]" data-speed="0.6">
+					<div className="w-3 h-3 rounded-full bg-gobai-cyan/20 blur-[2px]" />
+				</div>
+				<div className="parallax-element absolute top-[85%] right-[5%]" data-speed="0.2">
+					<svg width="50" height="50" viewBox="0 0 50 50" style={{ animation: 'rotate-slow 20s linear infinite' }}>
+						<circle cx="25" cy="25" r="20" fill="none" stroke="var(--color-gobai-turquoise)" strokeWidth="1" strokeDasharray="4 4" opacity="0.2" />
+					</svg>
+				</div>
+				<div className="parallax-element absolute top-[5%] right-[30%]" data-speed="0.55">
+					<div className="w-1 h-1 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
+				</div>
+				<div className="parallax-element absolute bottom-[40%] left-[40%]" data-speed="0.3">
+					<svg width="70" height="70" viewBox="0 0 70 70" style={{ animation: 'float-slow 7s ease-in-out infinite' }}>
+						<path d="M35 10 L60 50 L10 50 Z" fill="none" stroke="var(--color-gobai-cyan)" strokeWidth="0.5" opacity="0.1" />
+					</svg>
+				</div>
+
 				<div className="floating-service-element absolute top-20 left-16" style={{ animation: 'float-slow 5s ease-in-out infinite', opacity: 0.7 }}>
 					<svg width="80" height="80" viewBox="0 0 80 80" style={{ animation: 'rotate-slow 30s linear infinite' }}>
 						<path d="M40 10 L65 25 L65 50 L40 65 L15 50 L15 25 Z" fill="none" stroke="var(--color-gobai-cyan)" strokeWidth="2" opacity="0.4" />
@@ -225,7 +323,7 @@ export default function ServicesSection() {
 							textShadow: '0 0 40px rgba(179, 232, 255, 0.3)',
 						}}
 					>
-						Nuestros Servicios Especializados
+						{t('title')}
 					</h2>
 
 					<p
@@ -235,9 +333,7 @@ export default function ServicesSection() {
 							textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
 						}}
 					>
-						Descubre la gama completa de soluciones que GOBAI tiene para ti.
-						Desde estrategias personalizadas hasta herramientas de análisis avanzado,
-						elige lo que tu proyecto necesita para impactar.
+						{t('subtitle')}
 					</p>
 				</div>
 
@@ -293,7 +389,7 @@ export default function ServicesSection() {
 									}}
 								>
 									<span className="relative z-10 flex items-center gap-2">
-										Ver más
+										{t('seeMore')}
 										<svg
 											className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
 											fill="none"

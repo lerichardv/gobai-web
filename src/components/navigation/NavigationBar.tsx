@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import Image from 'next/image';
 import { Link, usePathname } from '@/i18n/routing';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function NavigationBar() {
 	const t = useTranslations('Navbar');
+	const locale = useLocale();
 	const navRef = useRef<HTMLDivElement>(null);
 	const logoRef = useRef<HTMLDivElement>(null);
 	const menuRef = useRef<HTMLDivElement>(null);
@@ -28,7 +29,7 @@ export default function NavigationBar() {
 
 	useEffect(() => {
 		const ctx = gsap.context(() => {
-			const isHomePage = pathname === '/' || pathname === '';
+			const isHomePage = pathname === '/' || pathname === '' || pathname === `/${locale}`;
 
 			if (isHomePage) {
 				// Initial state for homepage - coordinated by HeroSection
@@ -37,11 +38,16 @@ export default function NavigationBar() {
 					opacity: 0,
 				});
 			} else {
+				// Ensure it's visible on other pages
+				gsap.set(navRef.current, {
+					y: 0,
+					opacity: 1,
+				});
 				// Entrance for other pages
 				gsap.from(navRef.current, {
-					y: -100,
+					y: -50,
 					opacity: 0,
-					duration: 1,
+					duration: 0.8,
 					ease: 'power3.out'
 				});
 			}
@@ -78,8 +84,8 @@ export default function NavigationBar() {
 			<div className="max-w-7xl mx-auto px-6 lg:px-8">
 				{/* Desktop Navigation - Equally Distributed */}
 				<div className="hidden lg:flex items-center justify-between h-20 w-full relative">
-					{/* Left Navigation Items */}
-					<div ref={menuRef} className="flex-1 flex items-center justify-start space-x-8">
+					{/* Left Navigation Items - Moved Closer to Logo */}
+					<div ref={menuRef} className="flex-1 flex items-center justify-end space-x-6 pr-12">
 						{navItems.slice(0, 2).map((item) => (
 							<div key={item.name} className="relative group">
 								<Link
@@ -122,7 +128,7 @@ export default function NavigationBar() {
 								</Link>
 
 								{/* Dropdown menu */}
-								{item.hasDropdown && item.name === 'Servicios' && (
+								{item.hasDropdown && item.href === '#servicios' && (
 									<div className="absolute top-full left-0 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
 										<div
 											className="rounded-xl p-6 shadow-2xl border border-white/10"
@@ -131,9 +137,9 @@ export default function NavigationBar() {
 												backdropFilter: 'blur(20px)',
 											}}
 										>
-											<div className="space-y-3">
-												<a href="/campanas-disruptivas" className="block text-white/90 hover:text-white transition-colors duration-200 py-2">Campañas Disruptivas</a>
-												<a href="/gobiernos-politicas" className="block text-white/90 hover:text-white transition-colors duration-200 py-2">Gobiernos y Políticas</a>
+											<div className="space-y-3 font-display font-medium">
+												<Link href="/campanas-disruptivas" className="block text-white/90 hover:text-white transition-colors duration-200 py-2">{t('campaigns')}</Link>
+												<Link href="/gobiernos-politicas" className="block text-white/90 hover:text-white transition-colors duration-200 py-2">{t('governments')}</Link>
 											</div>
 										</div>
 									</div>
@@ -165,8 +171,8 @@ export default function NavigationBar() {
 						</Link>
 					</div>
 
-					{/* Right Navigation Items */}
-					<div className="flex-1 flex items-center justify-end space-x-8">
+					{/* Right Navigation Items - Moved Closer to Logo + Lang Picker */}
+					<div className="flex-1 flex items-center justify-start space-x-6 pl-12">
 						{navItems.slice(2).map((item) => (
 							<div key={item.name} className="relative group">
 								<Link
@@ -178,16 +184,6 @@ export default function NavigationBar() {
 								>
 									<span className="relative z-10 flex items-center gap-1">
 										{item.name}
-										{item.hasDropdown && (
-											<svg
-												className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-												fill="none"
-												stroke="currentColor"
-												viewBox="0 0 24 24"
-											>
-												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-											</svg>
-										)}
 									</span>
 
 									{/* Hover background effect */}
@@ -208,26 +204,26 @@ export default function NavigationBar() {
 										}}
 									/>
 								</Link>
-
-								{/* Dropdown menu */}
-								{item.hasDropdown && item.name === 'Servicios' && (
-									<div className="absolute top-full left-0 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-										<div
-											className="rounded-xl p-6 shadow-2xl border border-white/10"
-											style={{
-												background: 'linear-gradient(135deg, rgba(0, 61, 102, 0.95) 0%, rgba(31, 170, 163, 0.95) 100%)',
-												backdropFilter: 'blur(20px)',
-											}}
-										>
-											<div className="space-y-3">
-												<a href="/campanas-disruptivas" className="block text-white/90 hover:text-white transition-colors duration-200 py-2">Campañas Disruptivas</a>
-												<a href="/gobiernos-politicas" className="block text-white/90 hover:text-white transition-colors duration-200 py-2">Gobiernos y Políticas</a>
-											</div>
-										</div>
-									</div>
-								)}
 							</div>
 						))}
+
+						{/* Language Picker */}
+						<div className="flex items-center space-x-2 ml-4 p-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+							<Link 
+								href={pathname} 
+								locale="es"
+								className={`px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 ${locale === 'es' ? 'bg-gobai-turquoise text-white shadow-[0_0_10px_rgba(31,170,163,0.5)]' : 'text-white/50 hover:text-white/80'}`}
+							>
+								ES
+							</Link>
+							<Link 
+								href={pathname} 
+								locale="en"
+								className={`px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 ${locale === 'en' ? 'bg-gobai-turquoise text-white shadow-[0_0_10px_rgba(31,170,163,0.5)]' : 'text-white/50 hover:text-white/80'}`}
+							>
+								EN
+							</Link>
+						</div>
 					</div>
 				</div>
 
@@ -342,13 +338,13 @@ export default function NavigationBar() {
 										</button>
 
 										{/* Submenu */}
-										{item.name === 'Servicios' && (
+										{item.href === '#servicios' && (
 											<div
 												className={`overflow-hidden transition-all duration-300 ${activeSubmenu === item.name ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
 													}`}
 											>
-												<div className="ml-4 mt-2 space-y-2 border-l-2 border-white/20 pl-4">
-													<a
+												<div className="ml-4 mt-2 space-y-2 border-l-2 border-white/20 pl-4 font-display font-medium">
+													<Link
 														href="/campanas-disruptivas"
 														className="block p-3 text-white/80 hover:text-white transition-colors duration-200 hover:bg-white/5 rounded-lg"
 														onClick={() => {
@@ -356,9 +352,9 @@ export default function NavigationBar() {
 															setActiveSubmenu(null);
 														}}
 													>
-														Campañas Disruptivas
-													</a>
-													<a
+														{t('campaigns')}
+													</Link>
+													<Link
 														href="/gobiernos-politicas"
 														className="block p-3 text-white/80 hover:text-white transition-colors duration-200 hover:bg-white/5 rounded-lg"
 														onClick={() => {
@@ -366,8 +362,8 @@ export default function NavigationBar() {
 															setActiveSubmenu(null);
 														}}
 													>
-														Gobiernos y Políticas Públicas
-													</a>
+														{t('governments')}
+													</Link>
 												</div>
 											</div>
 										)}
@@ -403,6 +399,26 @@ export default function NavigationBar() {
 						>
 							Comenzar
 						</button>
+					</div>
+
+					{/* Mobile Language Picker */}
+					<div className="mt-6 flex justify-center space-x-4">
+						<Link 
+							href={pathname} 
+							locale="es"
+							onClick={() => setIsMobileMenuOpen(false)}
+							className={`px-6 py-2 rounded-xl text-sm font-bold transition-all duration-300 ${locale === 'es' ? 'bg-gobai-turquoise text-white shadow-[0_0_20px_rgba(31,170,163,0.4)]' : 'bg-white/5 text-white/50 border border-white/10'}`}
+						>
+							Español
+						</Link>
+						<Link 
+							href={pathname} 
+							locale="en"
+							onClick={() => setIsMobileMenuOpen(false)}
+							className={`px-6 py-2 rounded-xl text-sm font-bold transition-all duration-300 ${locale === 'en' ? 'bg-gobai-turquoise text-white shadow-[0_0_20px_rgba(31,170,163,0.4)]' : 'bg-white/5 text-white/50 border border-white/10'}`}
+						>
+							English
+						</Link>
 					</div>
 
 					{/* Contact Info */}

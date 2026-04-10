@@ -9,9 +9,267 @@
     "start": "Start"
   },
   "Hero": {
+    "aiBadge": "AI Powered Platform",
     "title": "Govern, lead and sell better With real data",
     "subtitle": "Unlock insights, automate processes, and drive growth with our intelligent platform designed for the future.",
     "ctaStart": "Get Started Today",
     "ctaDemo": "Watch Demo"
+  },
+  "CampanasDisruptivas": {
+    "hero": {
+      "title": "Revolutionize Politics with Intelligent Campaigns",
+      "subtitle": "Transform votes into victories using advanced artificial intelligence. Connect authentically with citizens, build powerful coalitions, and maximize your political impact with strategies based on real data.",
+      "cta": "Get Started Now"
+    },
+    "precision": {
+      "title": "Strategic Precision: Every Vote Counts",
+      "description": "Our AI analyzes behavioral patterns, political preferences, and demographic data to create unique psychographic profiles. Reach the heart of every citizen with personalized messages that truly resonate.",
+      "stat": "+300%",
+      "statDesc": "increase in conversion rate",
+      "feature": "Applied Neuropolitics",
+      "featureDesc": "Decode motivations, values, and emotional triggers of every voter"
+    },
+    "suite": {
+      "title": "Integral Suite for Political Leadership",
+      "item1": "Smart Political CRM with Predictive AI",
+      "item2": "Automated Multichannel Communication",
+      "item3": "Optimized Digital Campaign Platform",
+      "item4": "Transparent Financing System",
+      "cta": "Access the Platform"
+    },
+    "field": {
+      "title": "Precise Field Operations",
+      "description": "Turn data into conquered territory. Our territorial optimization algorithm maximizes every step of your volunteers, every conversation counts.",
+      "item1": "Optimized walking routes",
+      "item2": "Volunteer coordination",
+      "item3": "District segmentation"
+    },
+    "communication": {
+      "title": "Political Communication that Transforms Opinions",
+      "description": "Every message is an opportunity to change a mind, win a heart, add a vote. Communicate with surgical precision and human authenticity.",
+      "feature1": {
+        "title": "Messages that Connect Souls",
+        "desc": "Emotional AI that adapts tone, timing, and content according to the psychological profile of each citizen."
+      },
+      "feature2": {
+        "title": "Advanced Neuropoliical Segmentation",
+        "desc": "Identify undecided voters, hidden supporters, and convertible opponents using behavioral patterns."
+      },
+      "feature3": {
+        "title": "Real Impact Metrics",
+        "desc": "Measure changes in perception, voting intention, and probability of participation in real time."
+      }
+    },
+    "final": {
+      "question": "Ready to Redefine Political Power?",
+      "title": "Your Electoral Victory Starts Here: Will You Take Control?",
+      "cta1": "Get Started Now",
+      "cta2": "Speak with an Expert",
+      "box1": "Proven Victory",
+      "box1Desc": "+300% increase in real voting intention",
+      "box2": "Neuropolitics",
+      "box2Desc": "AI that predicts electoral behavior with 94% accuracy",
+      "box3": "Electoral Command",
+      "box3Desc": "Political strategists specializing in digital transformation"
+    }
+  },
+  "GobiernosPoliticas": {
+    "hero": {
+      "title": "Intelligent Governments, Empowered Citizens",
+      "subtitle": "Revolutionize citizen participation with cutting-edge technology. Build digital bridges between government and society, creating more effective public policies.",
+      "cta": "Get Started Now"
+    },
+    "participation": {
+      "title": "Strategic Community Participation",
+      "description": "GOBAI's community participation platform transforms the citizen experience, providing government teams with the necessary tools.",
+      "feature": "Intelligent Digital Governance",
+      "featureDesc": "Public decisions backed by authentic citizen participation"
+    },
+    "ecosystem": {
+      "title": "Complete Participation Ecosystem",
+      "item1": "Citizen Participation Platform",
+      "item1Desc": "Complete digital ecosystem that connects governments with citizens transparently.",
+      "item2": "Smart Consultation Tools",
+      "item2Desc": "Integral suite of participation methods from surveys to budgeting.",
+      "item3": "Predictive Policy Analysis",
+      "item3Desc": "AI that evaluates the potential impact of public policies before implementation.",
+      "item4": "Transparent Process Management",
+      "item4Desc": "Complete tracking of citizen participation with automatic reports.",
+      "cta": "Access the Platform"
+    },
+    "decisions": {
+      "title": "From Data to Smart Decisions",
+      "description": "Transform citizen participation into actionable information with specialized AI policy analysis.",
+      "feature1": {
+        "title": "Intelligent Data Processing",
+        "desc": "Analyze citizen contributions up to 50% faster with specialized AI."
+      },
+      "feature2": {
+        "title": "Integral Participation Tracking",
+        "desc": "Integrated dashboards providing a full view of behavior and engagement."
+      },
+      "feature3": {
+        "title": "Automated Executive Reporting",
+        "desc": "Generate impactful and professional reports with our intelligent system."
+      }
+    },
+    "tools": {
+      "title": "20+ Tools with Infinite Possibilities",
+      "description": "Choose from over 20 innovative participation methods: from informational tools to advanced surveys.",
+      "item1": "Intelligent citizen consultations",
+      "item2": "Participatory budgeting",
+      "item3": "Citizen proposal platforms"
+    },
+    "final": {
+      "title": "Build the Government of the Future Today",
+      "cta1": "Executive Demo",
+      "cta2": "Strategic Consultation",
+      "box1": "Proven Impact",
+      "box1Desc": "+200% increase in citizen participation",
+      "box2": "Leading Technology",
+      "box2Desc": "AI specialized in governance and public policies",
+      "box3": "Specialized Support",
+      "box3Desc": "Experts in digital government transformation"
+    }
+  },
+  "CasosDeExito": {
+    "hero": {
+      "title": "Results that Speak for Themselves",
+      "subtitle": "Real impact metrics demonstrating the effectiveness of our solutions in digital political transformation.",
+      "stat1": "50+",
+      "stat1Label": "Successful Projects",
+      "stat2": "2M+",
+      "stat2Label": "Citizens Impacted",
+      "stat3": "95%",
+      "stat3Label": "Success Rate",
+      "stat4": "24/7",
+      "stat4Label": "Continuous Support"
+    },
+    "projects": {
+      "title": "Projects that Make a Difference",
+      "description": "Each case represents years of experience, technological innovation, and commitment to the digital transformation of the political and governmental sector.",
+      "tag": "Municipal Government",
+      "cardTitle": "Digital Transformation of the Municipal Government of Tegucigalpa",
+      "cardDesc": "Successful implementation of a citizen participation platform that increased public consultation participation by 340%.",
+      "location": "Tegucigalpa",
+      "date": "15-12-2024",
+      "cta": "View more details"
+    },
+    "final": {
+      "title": "Ready to be part of our Success Stories?",
+      "description": "Join the organizations that are already transforming politics with GOBAI. Your project could be the next success story that inspires others.",
+      "button": "Get Started Now"
+    }
+  },
+  "Services": {
+    "phrase": "Innovation that transforms the future of your business",
+    "title": "Our Specialized Services",
+    "subtitle": "Discover the full range of solutions that GOBAI has for you. From customized strategies to advanced analysis tools, choose what your project needs to make an impact.",
+    "service1Title": "Disruptive Campaigns with AI",
+    "service1Desc": "Segment with precision, analyze personality and sentiments, and drive your results with Robot Candidates. Innovation and AI to optimize your strategy.",
+    "service2Title": "Governments and Public Policies",
+    "service2Desc": "Gobai revolutionizes citizen participation with digital technology. Drive smart cities and create more effective policies with innovation and data.",
+    "service3Title": "Public Opinion Crisis",
+    "service3Desc": "Manage crises with precise segmentation and real-time risk analysis. Respond with strategy and intelligence to protect your reputation with AI.",
+    "seeMore": "See more"
+  },
+  "Features": {
+    "title": "Explore the future of politics with artificial intelligence",
+    "subtitle": "Artificial Intelligence at the service of political advocacy. Innovation and strategy to lead change and transform the way we interact with society.",
+    "item1Title": "Save Time and Resources",
+    "item1Desc": "Automate complex processes and significantly reduce the time spent on political analysis, allowing your team to focus on strategy.",
+    "item2Title": "Simple Integration",
+    "item2Desc": "Implement our AI solutions without technical complications. Compatible with your existing systems and easy to use from day one.",
+    "item3Title": "Guaranteed Quality",
+    "item3Desc": "Precise and reliable results backed by advanced algorithms and years of experience in applied artificial intelligence.",
+    "item4Title": "Scalability",
+    "item4Desc": "Grow without limits. Our solutions adapt from local projects to national campaigns, always maintaining maximum performance.",
+    "clientsTitle": "Our clients",
+    "count": "50+ companies",
+    "trust": "More than <bold>{count}</bold> trust GOBAI"
+  },
+  "Data": {
+    "title": "Your data is in good hands",
+    "subtitle": "Artificial Intelligence at the service of political impact. Innovation and strategy to lead the change",
+    "secure": "Secure",
+    "feature1Title": "Advanced Encryption",
+    "feature1Desc": "End-to-end protection with military standards",
+    "feature2Title": "GDPR Compliance",
+    "feature2Desc": "Full compliance with international regulations",
+    "feature3Title": "Continuous Audit",
+    "feature3Desc": "24/7 monitoring and updated certifications",
+    "service1Title": "Public Opinion Data",
+    "service1Desc": "Deep analysis of citizen sentiment through advanced IA techniques to understand opinion trends.",
+    "service2Title": "Data for Decision Making",
+    "service2Desc": "Processed and structured information that enables strategic decisions based on verifiable data and predictive analysis.",
+    "service3Title": "Political Campaign Data",
+    "service3Desc": "Specialized metrics and performance analysis to optimize communication strategies and electoral reach.",
+    "status": {
+      "analyzing": "Analyzing data...",
+      "processing": "Processing information...",
+      "generating": "Generating insights...",
+      "optimizing": "Optimizing results...",
+      "validating": "Validating models...",
+      "compiling": "Compiling reports...",
+      "refining": "Refining algorithms...",
+      "synchronizing": "Synchronizing data...",
+      "calibrating": "Calibrating metrics...",
+      "finalizing": "Finalizing analysis..."
+    }
+  },
+  "CTA": {
+    "title": "Ready for the Future?",
+    "subtitle": "They Trust Us",
+    "description": "More than <bold>{count}</bold> have already revolutionized their operations with our technology.",
+    "count": "50 companies",
+    "final": "It's your turn!",
+    "button": "Get Started Now",
+    "stat1": "Proven Technology",
+    "stat2": "Guaranteed Results",
+    "stat3": "24/7 Support"
+  },
+  "Contacto": {
+    "hero": {
+      "title": "Request your Personalized Consultation",
+      "subtitle": "Complete the form and our team of specialists will contact you for a strategic evaluation without commitment.",
+      "form": {
+        "name": "Full Name*",
+        "namePlaceholder": "Name and Surname",
+        "email": "Email Address*",
+        "emailPlaceholder": "email@correo.com",
+        "phone": "Phone (Optional)",
+        "phonePlaceholder": "Name and Surname",
+        "message": "Detailed Message*",
+        "messagePlaceholder": "Describe your project, objectives and how we can help you transform your digital political strategy...",
+        "submit": "Send Inquiry"
+      },
+      "image": {
+        "tag": "Digital Political Transformation",
+        "tagDesc": "Advanced technology and artificial intelligence at the service of your political and social leadership."
+      }
+    },
+    "channels": {
+      "title": "Multiple Communication Channels",
+      "subtitle": "Choose the method that best suits your needs. We are available to provide the specialized support your project requires.",
+      "card1": {
+        "title": "Direct Communication",
+        "value": "info@gobai.la",
+        "desc": "Response guaranteed within 24 hours"
+      },
+      "card2": {
+        "title": "Specialized Support",
+        "value": "+504 2234-5678",
+        "desc": "Immediate technical consultation"
+      },
+      "card3": {
+        "title": "National Offices",
+        "value": "Local Presence",
+        "desc": "Full scope"
+      }
+    },
+    "final": {
+      "title": "Your Political Success Begins with a Conversation",
+      "subtitle": "Thousands of political leaders already trust GOBAI to transform their strategies. Join them and discover the power of artificial intelligence applied to politics."
+    }
   }
 }

@@ -18,8 +18,8 @@
 }
 
 :root {
-	--background: #ffffff;
-	--foreground: #171717;
+	--background: #00040a;
+	--foreground: #ffffff;
 }
 
 @theme inline {
@@ -46,12 +46,7 @@
 	--color-gobai-gray-lighten: #FCFCFC;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: #ffffff;
-		--foreground: #ffffff;
-	}
-}
+
 
 body {
 	background: var(--background);
@@ -186,7 +181,27 @@ body {
 	text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Smooth scroll behavior */
+/* Smooth scroll behavior and scrollbar gutter to prevent layout shift */
 html {
 	scroll-behavior: smooth;
+	scrollbar-gutter: stable;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #00040a;
+}
+
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(to bottom, var(--color-gobai-cyan), var(--color-gobai-turquoise));
+	border-radius: 5px;
+	border: 2px solid #00040a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(to bottom, var(--color-gobai-cyan-light), var(--color-gobai-turquoise-light));
 }
