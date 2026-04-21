@@ -26,23 +26,7 @@ export default function ClientsSection() {
         }
       });
 
-      // Infinite carousel animation
-      const carousel = carouselRef.current;
-      if (carousel) {
-        const logos = carousel.children;
-        const totalWidth = logos[0]?.scrollWidth || 0;
-        
-        gsap.set(carousel, {
-          x: 0,
-        });
-
-        gsap.to(carousel, {
-          x: -totalWidth,
-          duration: 20,
-          ease: 'none',
-          repeat: -1,
-        });
-      }
+      // Infinite carousel animation handled by CSS class animate-carousel
 
     }, sectionRef);
 
@@ -161,7 +145,7 @@ export default function ClientsSection() {
   return (
     <section 
       ref={sectionRef}
-      className="relative pt-0 pb-20 overflow-hidden"
+      className="relative pt-0 pb-20 overflow-hidden animate-gradient"
       style={{
         background: 'linear-gradient(135deg, #001a2e 0%, var(--color-gobai-blue-dark) 20%, #002447 40%, var(--color-gobai-blue-dark) 60%, #001533 80%, var(--color-gobai-blue-dark) 100%)',
       }}
@@ -204,7 +188,7 @@ export default function ClientsSection() {
           <div className="overflow-hidden">
             <div 
               ref={carouselRef}
-              className="flex items-center space-x-20 will-change-transform"
+              className="flex items-center space-x-20 animate-carousel"
               style={{ width: 'max-content' }}
             >
               {duplicatedClients.map((client, index) => (

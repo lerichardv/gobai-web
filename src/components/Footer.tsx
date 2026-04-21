@@ -69,24 +69,7 @@ export default function Footer() {
         stagger: 0.1,
       }, '-=0.6');
 
-      // Continuous animations
-      gsap.to('.footer-particle', {
-        y: -15,
-        duration: 4,
-        ease: 'power2.inOut',
-        repeat: -1,
-        yoyo: true,
-        stagger: 0.5,
-      });
 
-      gsap.to('.footer-glow', {
-        opacity: 0.6,
-        duration: 3,
-        ease: 'power2.inOut',
-        repeat: -1,
-        yoyo: true,
-        stagger: 0.4,
-      });
 
     }, footerRef);
 
@@ -170,20 +153,20 @@ export default function Footer() {
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Floating Particles */}
-        <div className="footer-particle absolute top-20 left-1/4">
-          <div className="w-2 h-2 rounded-full footer-glow" style={{ background: 'var(--color-gobai-cyan)', opacity: 0.4 }}></div>
+        <div className="footer-particle absolute top-20 left-1/4 animate-float-short">
+          <div className="w-2 h-2 rounded-full animate-pulse-glow" style={{ background: 'var(--color-gobai-cyan)', opacity: 0.4 }}></div>
         </div>
-        <div className="footer-particle absolute top-32 right-1/3">
-          <div className="w-1 h-1 rounded-full footer-glow" style={{ background: 'var(--color-gobai-turquoise)', opacity: 0.3 }}></div>
+        <div className="footer-particle absolute top-32 right-1/3 animate-float-short" style={{ animationDelay: '0.8s' }}>
+          <div className="w-1 h-1 rounded-full animate-pulse-glow" style={{ background: 'var(--color-gobai-turquoise)', opacity: 0.3, animationDelay: '0.4s' }}></div>
         </div>
-        <div className="footer-particle absolute top-1/2 left-1/6">
-          <div className="w-3 h-3 rounded-full footer-glow" style={{ background: 'var(--color-gobai-blue-bright)', opacity: 0.5 }}></div>
+        <div className="footer-particle absolute top-1/2 left-1/6 animate-float-short" style={{ animationDelay: '1.6s' }}>
+          <div className="w-3 h-3 rounded-full animate-pulse-glow" style={{ background: 'var(--color-gobai-blue-bright)', opacity: 0.5, animationDelay: '0.8s' }}></div>
         </div>
-        <div className="footer-particle absolute bottom-32 right-1/4">
-          <div className="w-2 h-2 rounded-full footer-glow" style={{ background: 'var(--color-gobai-cyan-light)', opacity: 0.4 }}></div>
+        <div className="footer-particle absolute bottom-32 right-1/4 animate-float-short" style={{ animationDelay: '2.4s' }}>
+          <div className="w-2 h-2 rounded-full animate-pulse-glow" style={{ background: 'var(--color-gobai-cyan-light)', opacity: 0.4, animationDelay: '1.2s' }}></div>
         </div>
-        <div className="footer-particle absolute bottom-20 left-1/3">
-          <div className="w-1 h-1 rounded-full footer-glow" style={{ background: 'var(--color-gobai-turquoise-light)', opacity: 0.6 }}></div>
+        <div className="footer-particle absolute bottom-20 left-1/3 animate-float-short" style={{ animationDelay: '3.2s' }}>
+          <div className="w-1 h-1 rounded-full animate-pulse-glow" style={{ background: 'var(--color-gobai-turquoise-light)', opacity: 0.6, animationDelay: '1.6s' }}></div>
         </div>
 
         {/* Subtle Grid Pattern */}

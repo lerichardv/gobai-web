@@ -41,7 +41,7 @@ export default function CasosDeExitoPage() {
         direction: "none" as const,
         outModes: { default: "bounce" as const },
       },
-      number: { density: { enable: true, area: 800 }, value: 60 },
+      number: { density: { enable: true, area: 800 }, value: 15 },
       opacity: { value: 0.3 },
       shape: { type: "circle" },
       size: { value: { min: 1, max: 3 } },

@@ -25,13 +25,7 @@ export default function ServicesSection() {
 				backgroundSize: '400% 400%',
 			});
 
-			gsap.to(backgroundRef.current, {
-				backgroundPosition: '100% 100%',
-				duration: 25,
-				ease: 'none',
-				repeat: -1,
-				yoyo: true,
-			});
+
 
 			// Set initial state for service cards
 			gsap.set('.service-card', {
@@ -169,10 +163,9 @@ export default function ServicesSection() {
 			{/* Animated Background */}
 			<div
 				ref={backgroundRef}
-				className="absolute inset-0 opacity-95"
+				className="absolute inset-0 opacity-95 animate-gradient"
 				style={{
 					background: 'linear-gradient(135deg, var(--color-gobai-gray-lighten) 0%, #f8fafc 30%, var(--color-gobai-gray-light) 70%, #ffffff 100%)',
-					backgroundSize: '400% 400%',
 				}}
 			/>
 

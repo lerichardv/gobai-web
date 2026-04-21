@@ -20,33 +20,7 @@ export default function Preloader() {
       });
     }, 300);
 
-    // Main loader animation (no entrance animations, just continuous)
-    gsap.to('.loader-ring', {
-      rotation: 360,
-      duration: 2,
-      ease: 'none',
-      repeat: -1,
-    });
 
-    // Pulse animation for center dot
-    gsap.to('.loader-center', {
-      scale: 1.2,
-      duration: 1,
-      ease: 'power2.inOut',
-      repeat: -1,
-      yoyo: true,
-    });
-
-    // Floating particles animation
-    gsap.to('.floating-particle', {
-      y: -20,
-      opacity: 0.8,
-      duration: 2,
-      ease: 'power2.inOut',
-      repeat: -1,
-      yoyo: true,
-      stagger: 0.3,
-    });
 
     return () => {
       clearTimeout(timer);
@@ -69,12 +43,13 @@ export default function Preloader() {
         {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={`particle-${i}`}
-            className="floating-particle absolute w-2 h-2 rounded-full"
+            className="floating-particle absolute w-2 h-2 rounded-full animate-float-short"
             style={{
               background: i % 2 === 0 ? 'var(--color-gobai-cyan)' : 'var(--color-gobai-turquoise)',
               left: `${10 + (i * 12)}%`,
               top: `${20 + (i * 8)}%`,
               boxShadow: `0 0 20px ${i % 2 === 0 ? 'var(--color-gobai-cyan)' : 'var(--color-gobai-turquoise)'}`,
+              animationDelay: `${i * 0.2}s`,
             }}
           />
         ))}
@@ -92,6 +67,8 @@ export default function Preloader() {
               WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
               WebkitMaskComposite: 'subtract',
               borderImage: 'linear-gradient(45deg, var(--color-gobai-cyan), var(--color-gobai-turquoise)) 1',
+              animation: 'spin 2s linear infinite',
+              willChange: 'transform',
             }}
           >
             <div className="absolute inset-1 rounded-full" style={{ background: 'var(--color-gobai-blue-dark)' }} />
@@ -110,7 +87,7 @@ export default function Preloader() {
 
           {/* Center Dot */}
           <div 
-            className="loader-center absolute inset-0 flex items-center justify-center"
+            className="loader-center absolute inset-0 flex items-center justify-center animate-pulse-glow"
           >
             <div 
               className="w-8 h-8 rounded-full"

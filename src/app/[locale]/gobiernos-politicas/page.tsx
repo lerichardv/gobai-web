@@ -74,7 +74,7 @@ export default function GobiernosPoliticasPage() {
             }
         },
         number: {
-            value: 80,
+            value: 25,
             density: {
                 enable: true,
                 area: 800

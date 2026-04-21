@@ -28,13 +28,7 @@ export default function FeaturesSection() {
 				backgroundSize: '400% 400%',
 			});
 
-			gsap.to(backgroundRef.current, {
-				backgroundPosition: '100% 100%',
-				duration: 25,
-				ease: 'none',
-				repeat: -1,
-				yoyo: true,
-			});
+
 
 			// Set initial state for feature cards
 			gsap.set('.feature-card', {
@@ -93,17 +87,7 @@ export default function FeaturesSection() {
 				}
 			});
 
-			// Infinite carousel animation for clients
-			const carousel = carouselRef.current;
-			if (carousel) {
-				gsap.set(carousel, { x: 0 });
-				gsap.to(carousel, {
-					x: -carousel.scrollWidth / 2,
-					duration: 20,
-					ease: 'none',
-					repeat: -1,
-				});
-			}
+
 
 			// Trust indicator animation
 			gsap.from(trustIndicatorRef.current, {
@@ -266,10 +250,9 @@ export default function FeaturesSection() {
 			{/* Animated Background */}
 			<div
 				ref={backgroundRef}
-				className="absolute inset-0 opacity-95"
+				className="absolute inset-0 opacity-95 animate-gradient"
 				style={{
 					background: 'linear-gradient(135deg, #001a2e 0%, var(--color-gobai-blue-dark) 20%, #002447 40%, var(--color-gobai-blue-dark) 60%, #001533 80%, var(--color-gobai-blue-dark) 100%)',
-					backgroundSize: '400% 400%',
 				}}
 			/>
 
@@ -459,7 +442,7 @@ export default function FeaturesSection() {
 					<div className="overflow-hidden">
 						<div
 							ref={carouselRef}
-							className="flex items-center space-x-20 will-change-transform"
+							className="flex items-center space-x-20 animate-carousel"
 							style={{ width: 'max-content' }}
 						>
 							{duplicatedClients.map((client, index) => (

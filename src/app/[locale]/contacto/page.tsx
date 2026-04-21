@@ -61,7 +61,7 @@ export default function ContactoPage() {
         straight: false,
         outModes: { default: "bounce" as const },
       },
-      number: { density: { enable: true, area: 800 }, value: 80 },
+      number: { density: { enable: true, area: 800 }, value: 20 },
       opacity: {
         value: { min: 0.1, max: 0.5 },
       },

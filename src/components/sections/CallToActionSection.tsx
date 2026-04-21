@@ -25,13 +25,7 @@ export default function CallToActionSection() {
 				backgroundSize: '400% 400%',
 			});
 
-			gsap.to(backgroundRef.current, {
-				backgroundPosition: '100% 100%',
-				duration: 30,
-				ease: 'none',
-				repeat: -1,
-				yoyo: true,
-			});
+
 
 			// Set initial states
 			gsap.set([titleRef.current, subtitleRef.current, descriptionRef.current, finalTextRef.current], {
@@ -154,10 +148,9 @@ export default function CallToActionSection() {
 			{/* Animated Background */}
 			<div
 				ref={backgroundRef}
-				className="absolute inset-0"
+				className="absolute inset-0 animate-gradient"
 				style={{
 					background: 'radial-gradient(ellipse at center, #003d66 0%, #001a2e 40%, #000814 70%, #001122 100%)',
-					backgroundSize: '400% 400%',
 				}}
 			/>
 
