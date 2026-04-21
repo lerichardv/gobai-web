@@ -34,6 +34,31 @@ export default function HeroSection() {
 	const ctaRef = useRef<HTMLDivElement>(null);
 	const floatingElementsRef = useRef<HTMLDivElement>(null);
 	const backgroundRef = useRef<HTMLDivElement>(null);
+	const personRef = useRef<HTMLDivElement>(null);
+
+	const handleStartClick = () => {
+		if (personRef.current) {
+			const tl = gsap.timeline();
+			
+			tl.to(personRef.current, {
+				scale: 1.15,
+				duration: 0.8,
+				ease: 'power3.out',
+				onComplete: () => {
+					const smoother = (gsap as any).ScrollSmoother?.get();
+					if (smoother) {
+						smoother.scrollTo('#services-section', true, 'top top');
+					}
+				}
+			})
+			.to(personRef.current, {
+				scale: 1,
+				duration: 1.2,
+				delay: 0.5,
+				ease: 'power2.inOut',
+			});
+		}
+	};
 
 
 
@@ -182,7 +207,7 @@ export default function HeroSection() {
 			/>
 			
 			{/* Person Image with Wave & Flicker */}
-			<div id="person-background" data-speed="0.8" className="absolute inset-0 pointer-events-none z-0">
+			<div ref={personRef} id="person-background" data-speed="0.8" className="absolute inset-0 pointer-events-none z-0">
 				{/* Base image */}
 				<div 
 					className="absolute inset-0 -translate-x-50 md:-translate-x-0 bg-bottom-left bg-no-repeat bg-size-[200%] sm:bg-size-[80%] hover:scale-105 transition-transform duration-[10s]" 
@@ -287,6 +312,7 @@ export default function HeroSection() {
 
 				<div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center">
 					<button
+						onClick={handleStartClick}
 						className="group relative px-10 py-4 bg-white text-lg font-bold rounded-full overflow-hidden hover:scale-105 hover:shadow-[0_20px_40px_rgba(255,255,255,0.2)]"
 						style={{
 							color: 'var(--color-gobai-blue-dark)',

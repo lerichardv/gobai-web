@@ -157,6 +157,7 @@ export default function ServicesSection() {
 
 	return (
 		<section
+			id="services-section"
 			ref={sectionRef}
 			className="relative py-20 overflow-hidden pb-[150px] bg-white"
 		>
