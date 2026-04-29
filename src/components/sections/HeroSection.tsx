@@ -60,29 +60,10 @@ export default function HeroSection() {
 			}
 
 			// Timeline for initial animations
-			const tl = gsap.timeline({
-				onComplete: () => {
-					if (smoother) {
-						smoother.paused(false);
-					} else {
-						document.body.style.overflow = 'auto';
-					}
-				}
-			});
+			const tl = gsap.timeline();
 
 			// Background gradient animation
-			gsap.set(backgroundRef.current, {
-				background: 'linear-gradient(135deg, #00040a 0%, #000a1a 20%, #00101a 40%, #001533 60%, #00040a 80%, #000a1a 100%)',
-				backgroundSize: '400% 400%',
-			});
-
-			gsap.to(backgroundRef.current, {
-				backgroundPosition: '0% 0%',
-				duration: 20,
-				ease: 'none',
-				repeat: -1,
-				yoyo: true,
-			});
+			// Using CSS animate-gradient instead of GSAP for performance
 
 			// Coordinated animations
 			tl.from('#person-background', {
@@ -128,6 +109,13 @@ export default function HeroSection() {
 				opacity: 0,
 				duration: 0.8,
 				ease: 'power3.out',
+				onStart: () => {
+					if (smoother) {
+						smoother.paused(false);
+					} else {
+						document.body.style.overflow = 'auto';
+					}
+				}
 			}, 2.4)
 			.from('.floating-element', {
 				scale: 0,
@@ -153,10 +141,9 @@ export default function HeroSection() {
 			{/* Animated Background */}
 			<div
 				ref={backgroundRef}
-				className="absolute inset-0 opacity-95"
+				className="absolute inset-0 opacity-95 animate-gradient"
 				style={{
 					background: 'linear-gradient(135deg, #00040a 0%, #000a1a 20%, #00101a 40%, #001533 60%, #00040a 80%, #000a1a 100%)',
-					backgroundSize: '400% 400%',
 				}}
 			/>
 			

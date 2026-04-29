@@ -90,10 +90,10 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <NavigationBar />
-          <SmoothScroll>
+          {/* <SmoothScroll> */}
             {children}
             <Footer />
-          </SmoothScroll>
+          {/* </SmoothScroll> */}
         </NextIntlClientProvider>
       </body>
     </html>
