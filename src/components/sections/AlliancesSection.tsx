@@ -123,10 +123,10 @@ const AlliancesSection = () => {
 								key={`${alliance.name}-${index}`}
 								className="shrink-0 group"
 							>
-								<div className="w-80 h-auto flex items-center justify-center px-4 py-8 transition-all duration-300 hover:scale-105">
+								<div className="w-64 md:w-80 h-auto flex items-center justify-center px-2 md:px-4 py-8 transition-all duration-300 hover:scale-105">
 									{/* Brand Card */}
 									<div
-										className="w-full rounded-2xl flex flex-col items-center justify-center gap-5 px-8 pb-8 pt-0 transition-all duration-300 group-hover:shadow-xl"
+										className="w-full rounded-2xl flex flex-col items-center justify-center gap-4 md:gap-5 px-6 md:px-8 pb-6 md:pb-8 pt-0 transition-all duration-300 group-hover:shadow-xl"
 										style={{
 											background: 'rgba(255, 255, 255, 0.05)',
 											border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -134,8 +134,7 @@ const AlliancesSection = () => {
 										}}
 									>
 										<div 
-											className={`relative w-56 h-32 shrink-0 rounded-2xl shadow-md flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${alliance.isWhiteLogo ? 'bg-[#001a2e] border border-white/10' : 'bg-white'}`}
-											style={{ marginTop: '-64px' }}
+											className={`relative w-40 md:w-56 h-24 md:h-32 shrink-0 rounded-2xl shadow-md flex items-center justify-center transition-all duration-300 group-hover:scale-110 -mt-12 md:-mt-16 ${alliance.isWhiteLogo ? 'bg-[#001a2e] border border-white/10' : 'bg-white'}`}
 										>
 											<div className="relative w-[85%] h-[85%]">
 												<Image 

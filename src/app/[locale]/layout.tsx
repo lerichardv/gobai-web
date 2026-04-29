@@ -19,15 +19,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GOBAI - Inteligencia Artificial para la Política | Revolución Digital",
-  description: "Transforma tu estrategia política con GOBAI. Análisis de opinión pública, toma de decisiones basada en datos y campañas políticas inteligentes. Más de 120 empresas confían en nuestra tecnología de IA avanzada.",
-  keywords: "inteligencia artificial, política, análisis de datos, opinión pública, campañas políticas, IA, estrategia política, automatización, análisis predictivo",
-  authors: [{ name: "GOBAI" }],
+  metadataBase: new URL('https://gobai.la'),
+  title: "GOBAI | Inteligencia Artificial para la Política y Estrategia Digital",
+  description: "Líderes en Inteligencia Artificial para la Política. Análisis de opinión pública, toma de decisiones basada en datos, campañas electorales inteligentes y monitoreo digital avanzado. Potenciamos tu estrategia con tecnología de vanguardia.",
+  keywords: "GOBAI, Inteligencia Artificial, IA Política, Análisis Electoral, Estrategia Digital, Opinión Pública, Big Data Política, Campañas Inteligentes, Data Science Política, Honduras, Latinoamérica",
+  authors: [{ name: "GOBAI Team" }],
   creator: "GOBAI",
   publisher: "GOBAI",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "android-chrome-192x192",
+        url: "/android-chrome-192x192.png",
+      },
+      {
+        rel: "android-chrome-512x512",
+        url: "/android-chrome-512x512.png",
+      },
+    ],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
-    title: "GOBAI - Inteligencia Artificial para la Política",
-    description: "Revoluciona tu estrategia política con IA avanzada. Análisis de opinión pública, toma de decisiones inteligente and campañas optimizadas.",
+    title: "GOBAI | Inteligencia Artificial para la Política",
+    description: "Transforma tu estrategia política con el poder de la IA. Análisis en tiempo real y decisiones informadas para el éxito electoral.",
     url: "https://gobai.com",
     siteName: "GOBAI",
     images: [
@@ -35,18 +57,18 @@ export const metadata: Metadata = {
         url: "/img/gobai-og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "GOBAI - Inteligencia Artificial para la Política",
+        alt: "GOBAI - IA para la Política",
       },
     ],
-    locale: "es_ES",
+    locale: "es_HN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GOBAI - Inteligencia Artificial para la Política",
-    description: "Revoluciona tu estrategia política con IA avanzada. Análisis de opinión pública y campañas inteligentes.",
+    title: "GOBAI | Inteligencia Artificial para la Política",
+    description: "Revolucionando la política con Inteligencia Artificial. Decisiones basadas en datos y estrategia digital avanzada.",
     images: ["/img/gobai-twitter-image.jpg"],
-    creator: "@gobai",
+    creator: "@gobai_ai",
   },
   robots: {
     index: true,
@@ -58,9 +80,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  verification: {
-    google: "your-google-verification-code",
   },
 };
 
@@ -90,10 +109,10 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <NavigationBar />
-          {/* <SmoothScroll> */}
+          <SmoothScroll>
             {children}
             <Footer />
-          {/* </SmoothScroll> */}
+          </SmoothScroll>
         </NextIntlClientProvider>
       </body>
     </html>
