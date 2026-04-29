@@ -10,8 +10,8 @@
   },
   "Hero": {
     "aiBadge": "Plataforma con Inteligencia Artificial",
-    "title": "Gobernar, liderar y vender mejor Con datos reales",
-    "subtitle": "Desbloquea insights, automatiza procesos e impulsa el crecimiento con nuestra plataforma inteligente diseñada para el futuro.",
+    "title": "Gobernar y liderar mejor Con datos reales",
+    "subtitle": "Inteligencia artificial para la incidencia política y <bold>empresarial</bold>",
     "ctaStart": "Comenzar Hoy",
     "ctaDemo": "Ver Demo"
   },
@@ -165,6 +165,11 @@
       "description": "Únase a las organizaciones que ya están transformando la política con GOBAI. Su proyecto puede ser el próximo caso de éxito que inspire a otros.",
       "button": "Comenzar Ahora"
     }
+  },
+  "Alliances": {
+    "title": "Nuestras Alianzas",
+    "subtitle": "Colaboramos con las instituciones líderes para ofrecer la mejor tecnología.",
+    "badge": "Alianza Estratégica"
   },
   "Services": {
     "phrase": "Innovación que transforma el futuro de tu negocio",

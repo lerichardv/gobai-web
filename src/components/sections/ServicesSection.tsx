@@ -39,7 +39,7 @@ export default function ServicesSection() {
 					trigger: sectionRef.current,
 					start: 'top 70%', // Start earlier for better visibility
 					end: 'bottom 20%',
-					toggleActions: 'play none none reverse',
+					toggleActions: 'play reverse play reverse',
 				}
 			});
 
@@ -64,15 +64,7 @@ export default function ServicesSection() {
 					duration: 0.8,
 					ease: 'back.out(1.2)',
 					stagger: 0.2,
-				}, '-=0.7')
-				.from('.floating-service-element', {
-					scale: 0,
-					rotation: 180,
-					opacity: 0,
-					duration: 1,
-					ease: 'back.out(1.7)',
-					stagger: 0.3,
-				}, '-=1.5');
+				}, '-=0.7');
 
 		}, sectionRef);
 
@@ -108,7 +100,7 @@ export default function ServicesSection() {
 	const phrase = t('phrase');
 
 	useGSAP(() => {
-		const letters = gsap.utils.toArray(phraseContainerRef?.current?.children || []);
+		const letters = gsap.utils.toArray('.phrase-char');
 
 		// Pin the container for 500px
 		ScrollTrigger.create({
@@ -175,99 +167,99 @@ export default function ServicesSection() {
 				{/* Parallax elements around the phrase area */}
 				<div className="parallax-element absolute top-[15%] left-[10%]" data-speed="0.2">
 					<svg width="40" height="40" viewBox="0 0 40 40" style={{ animation: 'rotate-slow 15s linear infinite' }}>
-						<rect x="10" y="10" width="20" height="20" fill="none" stroke="var(--color-gobai-cyan)" strokeWidth="1" opacity="0.2" />
+						<rect x="10" y="10" width="20" height="20" fill="none" stroke="var(--color-gobai-cyan)" strokeWidth="1" opacity="0.5" />
 					</svg>
 				</div>
 				<div className="parallax-element absolute top-[20%] right-[15%]" data-speed="0.4">
 					<svg width="60" height="60" viewBox="0 0 60 60" style={{ animation: 'pulse-scale 4s ease-in-out infinite' }}>
-						<circle cx="30" cy="30" r="15" fill="var(--color-gobai-turquoise)" opacity="0.1" />
+						<circle cx="30" cy="30" r="15" fill="var(--color-gobai-turquoise)" opacity="0.4" />
 					</svg>
 				</div>
 				<div className="parallax-element absolute top-[40%] left-[5%]" data-speed="0.6">
 					<svg width="100" height="100" viewBox="0 0 100 100" style={{ animation: 'float-medium 6s ease-in-out infinite' }}>
-						<path d="M50 20 L80 50 L50 80 L20 50 Z" fill="none" stroke="var(--color-gobai-blue-bright)" strokeWidth="1" opacity="0.15" />
+						<path d="M50 20 L80 50 L50 80 L20 50 Z" fill="none" stroke="var(--color-gobai-blue-bright)" strokeWidth="1" opacity="0.45" />
 					</svg>
 				</div>
 				<div className="parallax-element absolute top-[60%] right-[10%]" data-speed="0.3">
 					<svg width="80" height="80" viewBox="0 0 80 80" style={{ animation: 'rotate-slow 25s linear infinite reverse' }}>
-						<circle cx="40" cy="40" r="30" fill="none" stroke="var(--color-gobai-cyan-dark)" strokeWidth="1" opacity="0.12" />
-						<circle cx="40" cy="40" r="5" fill="var(--color-gobai-cyan)" opacity="0.2" />
+						<circle cx="40" cy="40" r="30" fill="none" stroke="var(--color-gobai-cyan-dark)" strokeWidth="1" opacity="0.4" />
+						<circle cx="40" cy="40" r="5" fill="var(--color-gobai-cyan)" opacity="0.5" />
 					</svg>
 				</div>
 				<div className="parallax-element absolute bottom-[10%] left-[20%]" data-speed="0.5">
 					<svg width="50" height="50" viewBox="0 0 50 50" style={{ animation: 'float-slow 5s ease-in-out infinite' }}>
-						<rect x="5" y="5" width="40" height="40" rx="8" fill="var(--color-gobai-turquoise-light)" opacity="0.1" />
+						<rect x="5" y="5" width="40" height="40" rx="8" fill="var(--color-gobai-turquoise-light)" opacity="0.4" />
 					</svg>
 				</div>
 
 				{/* 10 Additional Parallax Elements */}
 				<div className="parallax-element absolute top-[10%] left-[45%]" data-speed="0.15">
-					<div className="w-2 h-2 rounded-full bg-gobai-cyan" style={{ opacity: 0.3, animation: 'pulse-scale 2s infinite' }} />
+					<div className="w-2 h-2 rounded-full bg-gobai-cyan" style={{ opacity: 0.6, animation: 'pulse-scale 2s infinite' }} />
 				</div>
 				<div className="parallax-element absolute top-[30%] left-[25%]" data-speed="0.7">
 					<svg width="30" height="30" viewBox="0 0 30 30" style={{ animation: 'rotate-slow 10s linear infinite' }}>
-						<path d="M15 2 L28 15 L15 28 L2 15 Z" fill="none" stroke="var(--color-gobai-blue-bright)" strokeWidth="1" opacity="0.2" />
+						<path d="M15 2 L28 15 L15 28 L2 15 Z" fill="none" stroke="var(--color-gobai-blue-bright)" strokeWidth="1" opacity="0.5" />
 					</svg>
 				</div>
 				<div className="parallax-element absolute top-[50%] right-[35%]" data-speed="0.25">
-					<div className="w-1.5 h-1.5 rounded-full bg-gobai-turquoise" style={{ opacity: 0.4, animation: 'pulse-scale 3s infinite 0.5s' }} />
+					<div className="w-1.5 h-1.5 rounded-full bg-gobai-turquoise" style={{ opacity: 0.7, animation: 'pulse-scale 3s infinite 0.5s' }} />
 				</div>
 				<div className="parallax-element absolute bottom-[25%] right-[20%]" data-speed="0.8">
 					<svg width="120" height="120" viewBox="0 0 120 120" style={{ animation: 'float-medium 8s ease-in-out infinite' }}>
-						<circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-gobai-cyan-light)" strokeWidth="0.5" opacity="0.08" />
+						<circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-gobai-cyan-light)" strokeWidth="0.5" opacity="0.4" />
 					</svg>
 				</div>
 				<div className="parallax-element absolute top-[70%] left-[15%]" data-speed="0.45">
-					<div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gobai-cyan/20 to-transparent" style={{ animation: 'rotate-slow 40s linear infinite' }} />
+					<div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-gobai-cyan/60 to-transparent" style={{ animation: 'rotate-slow 40s linear infinite' }} />
 				</div>
 				<div className="parallax-element absolute top-[45%] left-[80%]" data-speed="0.35">
 					<svg width="40" height="40" viewBox="0 0 40 40" style={{ animation: 'pulse-scale 5s ease-in-out infinite 1s' }}>
-						<rect x="10" y="10" width="20" height="20" rx="4" fill="var(--color-gobai-blue-light)" opacity="0.15" />
+						<rect x="10" y="10" width="20" height="20" rx="4" fill="var(--color-gobai-blue-light)" opacity="0.45" />
 					</svg>
 				</div>
 				<div className="parallax-element absolute bottom-[15%] right-[45%]" data-speed="0.6">
-					<div className="w-3 h-3 rounded-full bg-gobai-cyan/20 blur-[2px]" />
+					<div className="w-3 h-3 rounded-full bg-gobai-cyan/60 blur-[2px]" />
 				</div>
 				<div className="parallax-element absolute top-[85%] right-[5%]" data-speed="0.2">
 					<svg width="50" height="50" viewBox="0 0 50 50" style={{ animation: 'rotate-slow 20s linear infinite' }}>
-						<circle cx="25" cy="25" r="20" fill="none" stroke="var(--color-gobai-turquoise)" strokeWidth="1" strokeDasharray="4 4" opacity="0.2" />
+						<circle cx="25" cy="25" r="20" fill="none" stroke="var(--color-gobai-turquoise)" strokeWidth="1" strokeDasharray="4 4" opacity="0.5" />
 					</svg>
 				</div>
 				<div className="parallax-element absolute top-[5%] right-[30%]" data-speed="0.55">
-					<div className="w-1 h-1 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
+					<div className="w-1 h-1 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
 				</div>
 				<div className="parallax-element absolute bottom-[40%] left-[40%]" data-speed="0.3">
 					<svg width="70" height="70" viewBox="0 0 70 70" style={{ animation: 'float-slow 7s ease-in-out infinite' }}>
-						<path d="M35 10 L60 50 L10 50 Z" fill="none" stroke="var(--color-gobai-cyan)" strokeWidth="0.5" opacity="0.1" />
+						<path d="M35 10 L60 50 L10 50 Z" fill="none" stroke="var(--color-gobai-cyan)" strokeWidth="0.5" opacity="0.4" />
 					</svg>
 				</div>
 
-				<div className="floating-service-element absolute top-20 left-16" style={{ animation: 'float-slow 5s ease-in-out infinite', opacity: 0.7 }}>
+				<div className="floating-service-element absolute top-20 left-16" style={{ animation: 'float-slow 5s ease-in-out infinite', opacity: 1 }}>
 					<svg width="80" height="80" viewBox="0 0 80 80" style={{ animation: 'rotate-slow 30s linear infinite' }}>
-						<path d="M40 10 L65 25 L65 50 L40 65 L15 50 L15 25 Z" fill="none" stroke="var(--color-gobai-cyan)" strokeWidth="2" opacity="0.4" />
-						<path d="M40 20 L55 30 L55 45 L40 55 L25 45 L25 30 Z" fill="var(--color-gobai-cyan-light)" opacity="0.3" />
+						<path d="M40 10 L65 25 L65 50 L40 65 L15 50 L15 25 Z" fill="none" stroke="var(--color-gobai-cyan)" strokeWidth="2" opacity="0.7" />
+						<path d="M40 20 L55 30 L55 45 L40 55 L25 45 L25 30 Z" fill="var(--color-gobai-cyan-light)" opacity="0.6" />
 					</svg>
 				</div>
 
-				<div className="floating-service-element absolute top-40 right-20" style={{ animation: 'float-medium 4.5s ease-in-out infinite 0.8s', opacity: 0.7 }}>
+				<div className="floating-service-element absolute top-40 right-20" style={{ animation: 'float-medium 4.5s ease-in-out infinite 0.8s', opacity: 1 }}>
 					<svg width="60" height="60" viewBox="0 0 60 60" style={{ animation: 'pulse-scale 3s ease-in-out infinite' }}>
-						<circle cx="30" cy="30" r="25" fill="none" stroke="var(--color-gobai-turquoise)" strokeWidth="2" opacity="0.5" />
-						<circle cx="30" cy="30" r="15" fill="var(--color-gobai-turquoise-light)" opacity="0.4" />
-						<circle cx="30" cy="30" r="8" fill="var(--color-gobai-turquoise)" opacity="0.6" />
+						<circle cx="30" cy="30" r="25" fill="none" stroke="var(--color-gobai-turquoise)" strokeWidth="2" opacity="0.8" />
+						<circle cx="30" cy="30" r="15" fill="var(--color-gobai-turquoise-light)" opacity="0.7" />
+						<circle cx="30" cy="30" r="8" fill="var(--color-gobai-turquoise)" opacity="0.9" />
 					</svg>
 				</div>
 
-				<div className="floating-service-element absolute bottom-32 left-24" style={{ animation: 'float-fast 4s ease-in-out infinite 1.6s', opacity: 0.7 }}>
+				<div className="floating-service-element absolute bottom-32 left-24" style={{ animation: 'float-fast 4s ease-in-out infinite 1.6s', opacity: 1 }}>
 					<svg width="70" height="70" viewBox="0 0 70 70" style={{ animation: 'rotate-slow 25s linear infinite' }}>
-						<rect x="10" y="10" width="50" height="50" rx="12" fill="none" stroke="var(--color-gobai-blue-bright)" strokeWidth="2" opacity="0.4" />
-						<rect x="20" y="20" width="30" height="30" rx="6" fill="var(--color-gobai-blue-lighten)" opacity="0.3" />
+						<rect x="10" y="10" width="50" height="50" rx="12" fill="none" stroke="var(--color-gobai-blue-bright)" strokeWidth="2" opacity="0.7" />
+						<rect x="20" y="20" width="30" height="30" rx="6" fill="var(--color-gobai-blue-lighten)" opacity="0.6" />
 					</svg>
 				</div>
 
-				<div className="floating-service-element absolute bottom-20 right-32" style={{ animation: 'float-slow 5.5s ease-in-out infinite 2.4s', opacity: 0.7 }}>
+				<div className="floating-service-element absolute bottom-20 right-32" style={{ animation: 'float-slow 5.5s ease-in-out infinite 2.4s', opacity: 1 }}>
 					<svg width="90" height="90" viewBox="0 0 90 90" style={{ animation: 'pulse-scale 3.5s ease-in-out infinite' }}>
-						<polygon points="45,10 75,30 75,60 45,80 15,60 15,30" fill="none" stroke="var(--color-gobai-cyan-dark)" strokeWidth="2" opacity="0.4" />
-						<polygon points="45,25 60,35 60,55 45,65 30,55 30,35" fill="var(--color-gobai-cyan)" opacity="0.3" />
+						<polygon points="45,10 75,30 75,60 45,80 15,60 15,30" fill="none" stroke="var(--color-gobai-cyan-dark)" strokeWidth="2" opacity="0.7" />
+						<polygon points="45,25 60,35 60,55 45,65 30,55 30,35" fill="var(--color-gobai-cyan)" opacity="0.6" />
 					</svg>
 				</div>
 			</div>
@@ -284,21 +276,16 @@ export default function ServicesSection() {
 						}}
 					>
 						<span id="animated-phrase-text" className="inline-block " ref={phraseContainerRef}>
-							{/* <span className="phrase-char text-gobai-blue opacity-0 translate-y-2">
-								t
-							</span>
-							<span className="phrase-char text-gobai-blue opacity-0 translate-y-2">
-								e
-							</span>
-							<span className="phrase-char text-gobai-blue opacity-0 translate-y-2">
-								s
-							</span>
-							<span className="phrase-char text-gobai-blue opacity-0 translate-y-2">
-								t
-							</span> */}
-							{phrase.split("").map((char, index) => (
-								<span key={index} className="inline-block phrase-char opacity-0 -translate-y-[20px] text-gobai-blue-dark">
-									{char === " " ? "\u00A0" : char}
+							{phrase.split(" ").map((word, wordIndex, array) => (
+								<span key={`word-${wordIndex}`}>
+									<span className="inline-block whitespace-nowrap">
+										{word.split("").map((char, charIndex) => (
+											<span key={`char-${wordIndex}-${charIndex}`} className="inline-block phrase-char opacity-0 -translate-y-[20px] text-gobai-blue-dark">
+												{char}
+											</span>
+										))}
+									</span>
+									{wordIndex !== array.length - 1 && " "}
 								</span>
 							))}
 						</span>

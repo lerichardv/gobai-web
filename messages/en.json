@@ -10,8 +10,8 @@
   },
   "Hero": {
     "aiBadge": "AI Powered Platform",
-    "title": "Govern, lead and sell better With real data",
-    "subtitle": "Unlock insights, automate processes, and drive growth with our intelligent platform designed for the future.",
+    "title": "Govern and lead better With real data",
+    "subtitle": "Artificial intelligence for political and <bold>corporate</bold> advocacy",
     "ctaStart": "Get Started Today",
     "ctaDemo": "Watch Demo"
   },
@@ -160,6 +160,11 @@
       "description": "Join the organizations that are already transforming politics with GOBAI. Your project could be the next success story that inspires others.",
       "button": "Get Started Now"
     }
+  },
+  "Alliances": {
+    "title": "Our Alliances",
+    "subtitle": "Powered by the best institutions and companies in the region.",
+    "badge": "Strategic Alliance"
   },
   "Services": {
     "phrase": "Innovation that transforms the future of your business",

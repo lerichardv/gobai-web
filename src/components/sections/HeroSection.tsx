@@ -1,24 +1,9 @@
-
 'use client';
 
-const DOT_COUNT = 10; // Reduced for performance
-// Adjustable mesh variables
-const DOT_CONNECTION_RADIUS = 300; // px
-const DOT_SPACING_X = 160; // px
-const DOT_SPACING_Y = 140; // px
-const DOT_SIZE_MIN = 1; // px
-const DOT_SIZE_VARIATION = 3.5; // px
-const DOT_SIZE_NEIGHBOR_SCALE = 1.2;
-const DOT_DISTANCE_MIN = 50; // px
-const DOT_DISTANCE_MAX = 1000; // px
-const DOT_MESH_CENTER_X = 800; // px (center of mesh horizontally)
-const DOT_MESH_CENTER_Y = 400; // px (center of mesh vertically)
-
-import { useEffect, useRef, useState, useLayoutEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 if (typeof window !== 'undefined') {
@@ -32,7 +17,6 @@ export default function HeroSection() {
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	const subtitleRef = useRef<HTMLParagraphElement>(null);
 	const ctaRef = useRef<HTMLDivElement>(null);
-	const floatingElementsRef = useRef<HTMLDivElement>(null);
 	const backgroundRef = useRef<HTMLDivElement>(null);
 	const personRef = useRef<HTMLDivElement>(null);
 
@@ -166,36 +150,6 @@ export default function HeroSection() {
 			ref={heroRef}
 			className="min-h-screen flex items-center lg:items-start justify-center overflow-hidden pb-16 pt-32 md:pt-16 p-5 relative"
 		>
-			<style>{`
-				@keyframes energyScan {
-					0% {
-						-webkit-mask-position: 0% -100%;
-						mask-position: 0% -100%;
-						opacity: 0;
-					}
-					10% { opacity: 0.3; }
-					20% { opacity: 1; filter: brightness(2) saturate(1.5); }
-					25% { opacity: 0.5; filter: brightness(3) saturate(2); }
-					30% { opacity: 1; filter: brightness(2.5) saturate(1.5); }
-					60% { opacity: 0.8; filter: brightness(1.8) saturate(1.2); }
-					90% { opacity: 0; }
-					100% {
-						-webkit-mask-position: 0% 200%;
-						mask-position: 0% 200%;
-						opacity: 0;
-					}
-				}
-				.animate-scan-wave {
-					-webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.1) 80%, transparent 100%);
-					mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.1) 80%, transparent 100%);
-					-webkit-mask-size: 100% 300%;
-					mask-size: 100% 300%;
-					-webkit-mask-repeat: no-repeat;
-					mask-repeat: no-repeat;
-					animation: energyScan 5s ease-in-out infinite;
-				}
-			`}</style>
-
 			{/* Animated Background */}
 			<div
 				ref={backgroundRef}
@@ -261,6 +215,58 @@ export default function HeroSection() {
 					</svg>
 				</div>
 
+				{/* Additional floating particles */}
+				<div className="floating-element absolute top-[30%] right-[30%]" style={{ animation: 'float-fast 3.5s ease-in-out infinite 0.5s', opacity: 0.8 }}>
+					<div className="w-2 h-2 rounded-full bg-gobai-cyan-light" style={{ animation: 'pulse-scale 2.5s infinite' }} />
+				</div>
+
+				{/* More floating dots added */}
+				<div className="floating-element absolute top-[40%] right-[15%]" style={{ animation: 'float-slow 5s ease-in-out infinite 1.2s', opacity: 0.7 }}>
+					<div className="w-1.5 h-1.5 rounded-full bg-gobai-blue-bright" style={{ animation: 'pulse-scale 3s infinite reverse' }} />
+				</div>
+				
+				<div className="floating-element absolute bottom-[35%] left-[15%]" style={{ animation: 'float-medium 4s ease-in-out infinite 0.7s', opacity: 0.9 }}>
+					<div className="w-2 h-2 rounded-full bg-gobai-turquoise-light" style={{ animation: 'pulse-scale 2s infinite' }} />
+				</div>
+
+				<div className="floating-element absolute top-[25%] left-[40%]" style={{ animation: 'float-fast 3.2s ease-in-out infinite 2s', opacity: 0.6 }}>
+					<div className="w-1 h-1 rounded-full bg-white" style={{ animation: 'pulse-scale 1.5s infinite' }} />
+				</div>
+
+				<div className="floating-element absolute bottom-[15%] right-[45%]" style={{ animation: 'float-slow 6s ease-in-out infinite 0.9s', opacity: 0.5 }}>
+					<div className="w-2.5 h-2.5 rounded-full bg-gobai-cyan" style={{ animation: 'pulse-scale 4s infinite' }} />
+				</div>
+
+				<div className="floating-element absolute top-[15%] right-[45%]" style={{ animation: 'float-medium 4.5s ease-in-out infinite 1.5s', opacity: 0.6 }}>
+					<div className="w-3 h-3 rounded-full bg-gobai-turquoise" style={{ animation: 'pulse-scale 2s infinite' }} />
+				</div>
+
+				<div className="floating-element absolute bottom-[45%] left-[25%]" style={{ animation: 'float-slow 8s ease-in-out infinite 0.8s', opacity: 0.5 }}>
+					<svg width="90" height="90" viewBox="0 0 90 90" style={{ animation: 'rotate-slow 35s linear infinite' }}>
+						<circle cx="45" cy="45" r="40" fill="none" stroke="var(--color-gobai-blue-light)" strokeWidth="0.5" strokeDasharray="4 8" opacity="0.4" />
+					</svg>
+				</div>
+
+				<div className="floating-element absolute bottom-[25%] right-[35%]" style={{ animation: 'float-fast 4.2s ease-in-out infinite 2.5s', opacity: 0.7 }}>
+					<svg width="45" height="45" viewBox="0 0 45 45" style={{ animation: 'pulse-scale 3.5s ease-in-out infinite' }}>
+						<rect x="5" y="15" width="35" height="15" rx="7.5" fill="none" stroke="var(--color-gobai-cyan)" strokeWidth="1.5" opacity="0.25" />
+						<circle cx="22.5" cy="22.5" r="4" fill="var(--color-gobai-turquoise-light)" opacity="0.3" />
+					</svg>
+				</div>
+
+				<div className="floating-element absolute top-[45%] left-[10%]" style={{ animation: 'float-medium 5.5s ease-in-out infinite 0.3s', opacity: 0.6 }}>
+					<svg width="35" height="35" viewBox="0 0 35 35" style={{ animation: 'rotate-slow 15s linear infinite' }}>
+						<path d="M17.5 0 L17.5 35 M0 17.5 L35 17.5" stroke="var(--color-gobai-blue-bright)" strokeWidth="2" opacity="0.2" />
+					</svg>
+				</div>
+
+				<div className="floating-element absolute top-[60%] right-[10%]" style={{ animation: 'float-slow 6.5s ease-in-out infinite 1.8s', opacity: 0.7 }}>
+					<svg width="80" height="80" viewBox="0 0 80 80" style={{ animation: 'pulse-scale 5s ease-in-out infinite' }}>
+						<polygon points="40,10 65,25 65,55 40,70 15,55 15,25" fill="none" stroke="var(--color-gobai-turquoise-dark)" strokeWidth="1" opacity="0.2" />
+						<polygon points="40,20 55,30 55,50 40,60 25,50 25,30" fill="var(--color-gobai-blue-lighten)" opacity="0.05" />
+					</svg>
+				</div>
+
 				{/* Neural network connecting lines */}
 				<svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
 					<defs>
@@ -307,7 +313,9 @@ export default function HeroSection() {
 						textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
 					}}
 				>
-					{t('subtitle')}
+					{t.rich('subtitle', {
+						bold: (chunks) => <span className="font-bold text-white">{chunks}</span>
+					})}
 				</p>
 
 				<div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center">
@@ -333,36 +341,6 @@ export default function HeroSection() {
 					</button>
 				</div>
 
-				{/* Stats or features */}
-				{/* <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
-          <div className="text-center">
-            <div 
-              className="text-4xl font-bold mb-2"
-              style={{ color: 'var(--color-gobai-cyan-light)' }}
-            >
-              99.9%
-            </div>
-            <div className="text-white/80">Tasa de Precisión</div>
-          </div>
-          <div className="text-center">
-            <div 
-              className="text-4xl font-bold mb-2"
-              style={{ color: 'var(--color-gobai-turquoise-light)' }}
-            >
-              50x
-            </div>
-            <div className="text-white/80">Procesamiento Más Rápido</div>
-          </div>
-          <div className="text-center">
-            <div 
-              className="text-4xl font-bold mb-2"
-              style={{ color: 'var(--color-gobai-blue-bright)' }}
-            >
-              24/7
-            </div>
-            <div className="text-white/80">Soporte IA</div>
-          </div>
-        </div> */}
 			</div>
 
 			{/* Bottom gradient overlay */}
@@ -372,7 +350,6 @@ export default function HeroSection() {
 					background: 'linear-gradient(to top, rgba(255, 255, 255, 0.1), transparent)',
 				}}
 			/>
-
 
 		</div>
 	);

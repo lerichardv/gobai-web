@@ -25,9 +25,9 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       smoother.current = ScrollSmoother.create({
         wrapper: '#smooth-wrapper',
         content: '#smooth-content',
-        smooth: 1, // seconds it takes to catch up to native scroll position
-        effects: true, // look for data-speed and data-lag attributes on elements
-        smoothTouch: 0.1, // much shorter smoothing time on touch devices
+        smooth: 0.5, // seconds it takes to catch up to native scroll position
+        effects: false, // look for data-speed and data-lag attributes on elements
+        smoothTouch: 0.05, // much shorter smoothing time on touch devices
       });
     },
     {

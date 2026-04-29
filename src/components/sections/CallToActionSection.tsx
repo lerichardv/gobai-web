@@ -25,8 +25,6 @@ export default function CallToActionSection() {
 				backgroundSize: '400% 400%',
 			});
 
-
-
 			// Set initial states
 			gsap.set([titleRef.current, subtitleRef.current, descriptionRef.current, finalTextRef.current], {
 				y: 80,
@@ -38,15 +36,6 @@ export default function CallToActionSection() {
 				opacity: 0,
 			});
 
-			gsap.set('.cta-particle', {
-				scale: 0,
-				opacity: 0,
-			});
-
-			gsap.set('.cta-ring', {
-				scale: 0,
-				opacity: 0,
-			});
 
 			// Main animation timeline
 			const tl = gsap.timeline({
@@ -54,7 +43,7 @@ export default function CallToActionSection() {
 					trigger: sectionRef.current,
 					start: 'top 70%',
 					end: 'bottom 30%',
-					toggleActions: 'play none none none',
+					toggleActions: 'play reverse play reverse',
 				}
 			});
 
@@ -87,21 +76,7 @@ export default function CallToActionSection() {
 					opacity: 1,
 					duration: 0.8,
 					ease: 'back.out(1.7)',
-				}, '-=0.6')
-				.to('.cta-particle', {
-					scale: 1,
-					opacity: 1,
-					duration: 0.6,
-					ease: 'back.out(1.7)',
-					stagger: 0.1,
-				}, '-=0.6')
-				.to('.cta-ring', {
-					scale: 1,
-					opacity: 1,
-					duration: 1,
-					ease: 'elastic.out(1, 0.5)',
-					stagger: 0.2,
-				}, '-=0.8');
+				}, '-=0.6');
 
 			// Button hover animation setup
 			const button = ctaButtonRef.current;

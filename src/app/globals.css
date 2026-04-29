@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import "./animations.css";
 @font-face {
 	font-family: "Gurvaco";
 	src: url("/fonts/gurvaco-regular.woff2");
@@ -54,147 +54,6 @@ body {
 	font-family: var(--font-body), Arial, Helvetica, sans-serif;
 }
 
-/* Custom animations and utilities for hero section */
-@keyframes float {
-
-	0%,
-	100% {
-		transform: translateY(0px);
-	}
-
-	50% {
-		transform: translateY(-20px);
-	}
-}
-
-@keyframes pulse-glow {
-
-	0%,
-	100% {
-		opacity: 0.7;
-		transform: scale(1);
-	}
-
-	50% {
-		opacity: 1;
-		transform: scale(1.05);
-	}
-}
-
-@keyframes gradient-shift {
-	0% {
-		background-position: 0% 50%;
-	}
-
-	50% {
-		background-position: 100% 50%;
-	}
-
-	100% {
-		background-position: 0% 50%;
-	}
-}
-
-/* Floating animations with different variations for performance */
-@keyframes float-slow {
-
-	0%,
-	100% {
-		transform: translateY(0px);
-	}
-
-	50% {
-		transform: translateY(-30px);
-	}
-}
-
-@keyframes float-medium {
-
-	0%,
-	100% {
-		transform: translateY(0px);
-	}
-
-	50% {
-		transform: translateY(-25px);
-	}
-}
-
-@keyframes float-fast {
-
-	0%,
-	100% {
-		transform: translateY(0px);
-	}
-
-	50% {
-		transform: translateY(-20px);
-	}
-}
-
-/* Rotation animation for decorative elements */
-@keyframes rotate-slow {
-	from {
-		transform: rotate(0deg);
-	}
-
-	to {
-		transform: rotate(360deg);
-	}
-}
-
-/* Pulse animation for elements */
-@keyframes pulse-scale {
-
-	0%,
-	100% {
-		transform: scale(1);
-	}
-
-	50% {
-		transform: scale(1.1);
-	}
-}
-
-@keyframes carousel-scroll {
-	from {
-		transform: translateX(0);
-	}
-	to {
-		transform: translateX(-50%);
-	}
-}
-
-.animate-carousel {
-	animation: carousel-scroll 30s linear infinite;
-	will-change: transform;
-}
-
-.animate-float {
-	animation: float 6s ease-in-out infinite;
-	will-change: transform;
-}
-
-@keyframes float-short {
-	0%, 100% { transform: translateY(0); }
-	50% { transform: translateY(-15px); }
-}
-
-.animate-float-short {
-	animation: float-short 4s ease-in-out infinite;
-	will-change: transform;
-}
-
-
-.animate-pulse-glow {
-	animation: pulse-glow 3s ease-in-out infinite;
-}
-
-.animate-gradient {
-	animation: gradient-shift 15s ease infinite;
-	background-size: 400% 400%;
-}
-
 /* Glass morphism effect */
 .glass {
 	backdrop-filter: blur(10px);
@@ -205,6 +64,10 @@ body {
 /* Enhanced text shadows for better contrast */
 .text-shadow-lg {
 	text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+#smooth-content {
+	will-change: transform;
 }
 
 /* Smooth scroll behavior and scrollbar gutter to prevent layout shift */

@@ -1,0 +1,169 @@
+/* Custom animations and utilities */
+@keyframes energyScan {
+	0% {
+		-webkit-mask-position: 0% -100%;
+		mask-position: 0% -100%;
+		opacity: 0;
+	}
+	10% { opacity: 0.3; }
+	20% { opacity: 1; filter: brightness(2) saturate(1.5); }
+	25% { opacity: 0.5; filter: brightness(3) saturate(2); }
+	30% { opacity: 1; filter: brightness(2.5) saturate(1.5); }
+	60% { opacity: 0.8; filter: brightness(1.8) saturate(1.2); }
+	90% { opacity: 0; }
+	100% {
+		-webkit-mask-position: 0% 200%;
+		mask-position: 0% 200%;
+		opacity: 0;
+	}
+}
+
+.animate-scan-wave {
+	-webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.1) 80%, transparent 100%);
+	mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.1) 80%, transparent 100%);
+	-webkit-mask-size: 100% 300%;
+	mask-size: 100% 300%;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	animation: energyScan 5s ease-in-out infinite;
+}
+
+@keyframes float {
+
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-20px);
+	}
+}
+
+@keyframes pulse-glow {
+
+	0%,
+	100% {
+		opacity: 0.7;
+		transform: scale(1);
+	}
+
+	50% {
+		opacity: 1;
+		transform: scale(1.05);
+	}
+}
+
+@keyframes gradient-shift {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/* Floating animations with different variations for performance */
+@keyframes float-slow {
+
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-30px);
+	}
+}
+
+@keyframes float-medium {
+
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-25px);
+	}
+}
+
+@keyframes float-fast {
+
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-20px);
+	}
+}
+
+/* Rotation animation for decorative elements */
+@keyframes rotate-slow {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Pulse animation for elements */
+@keyframes pulse-scale {
+
+	0%,
+	100% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.1);
+	}
+}
+
+@keyframes carousel-scroll {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+.animate-carousel {
+	animation: carousel-scroll 30s linear infinite;
+	will-change: transform;
+}
+
+.animate-float {
+	animation: float 6s ease-in-out infinite;
+	will-change: transform;
+}
+
+@keyframes float-short {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-15px); }
+}
+
+.animate-float-short {
+	animation: float-short 4s ease-in-out infinite;
+	will-change: transform;
+}
+
+
+.animate-pulse-glow {
+	animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+	animation: gradient-shift 15s ease infinite;
+	background-size: 400% 400%;
+}
