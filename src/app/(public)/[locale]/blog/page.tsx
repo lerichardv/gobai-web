@@ -174,10 +174,10 @@ export default function BlogListPage() {
             <span className="w-2 h-2 rounded-full bg-gobai-cyan animate-pulse" />
             Actualidad
           </div>
-          <h1 className="text-3xl md:text-5xl font-display font-bold mb-8 uppercase tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-display font-bold mb-8 uppercase">
             {t('hero.title')}
           </h1>
-          <p className="text-lg md:text-xl text-white/70 max-w-4xl mx-auto mb-12 leading-relaxed">
+          <p className="text-lg md:text-xl text-white/70 max-w-4xl mx-auto mb-12">
             {t('hero.subtitle')}
           </p>
           
