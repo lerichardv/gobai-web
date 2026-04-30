@@ -302,11 +302,13 @@ export default function HeroSection() {
 						textShadow: '0 0 40px rgba(179, 232, 255, 0.3)',
 					}}
 				>
-					<span className="block text-white lg:text-left">{t('title')}</span>
+					<span className="block text-white lg:text-left">{t.rich('subtitle', {
+						bold: (chunks) => <span className="font-bold text-white">{chunks}</span>
+					})}</span>
 					{/* <small>Con IA</small> */}
 				</h1>
 
-				<p
+				{/* <p
 					ref={subtitleRef}
 					className="text-md md:text-lg text-white/90 mb-6 max-w-3xl mx-auto leading-relaxed font-light lg:text-left"
 					style={{
@@ -316,7 +318,7 @@ export default function HeroSection() {
 					{t.rich('subtitle', {
 						bold: (chunks) => <span className="font-bold text-white">{chunks}</span>
 					})}
-				</p>
+				</p> */}
 
 				<div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center">
 					<button
