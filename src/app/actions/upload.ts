@@ -24,9 +24,8 @@ export async function uploadImageAction(formData: FormData) {
     const blobName = `${timestamp}-${cleanName}`
     
     const arrayBuffer = await file.arrayBuffer()
-    const buffer = Buffer.from(arrayBuffer)
     
-    await store.set(blobName, buffer)
+    await store.set(blobName, arrayBuffer)
     
     // Construct the proxy URL
     // We use a relative path so it works across environments
