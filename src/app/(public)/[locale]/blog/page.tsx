@@ -259,7 +259,7 @@ export default function BlogListPage() {
                         </span>
                       </div>
 
-                      <h3 className="text-xl md:text-2xl font-display font-bold text-gobai-blue-dark mb-6 group-hover:text-gobai-cyan transition-colors uppercase line-clamp-2">
+                      <h3 className="text-2xl md:text-3xl font-display font-bold text-gobai-blue-dark mb-6 group-hover:text-gobai-cyan transition-colors uppercase line-clamp-2">
                         {post.title}
                       </h3>
                       
