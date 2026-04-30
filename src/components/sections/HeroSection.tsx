@@ -9,7 +9,7 @@ import Image from 'next/image';
 import personImg from '../../../public/img/person.png';
 
 if (typeof window !== 'undefined') {
-	gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+	gsap.registerPlugin(ScrollTrigger);
 }
 
 export default function HeroSection() {

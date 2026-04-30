@@ -9,7 +9,7 @@ import { useGSAP } from '@gsap/react';
 
 // Only register plugins on the client
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
 }
 
 interface SmoothScrollProps {

@@ -47,10 +47,10 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
             <Toaster position="top-center" richColors />
             <NavigationBar />
-            <SmoothScroll>
+            {/* <SmoothScroll> */}
               {children}
               <Footer />
-            </SmoothScroll>
+            {/* </SmoothScroll> */}
         </NextIntlClientProvider>
       </body>
     </html>
