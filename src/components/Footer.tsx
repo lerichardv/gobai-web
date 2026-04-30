@@ -4,6 +4,8 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import logoImg from '../../public/img/gobai-white-logo.png';
+import { usePathname } from '@/i18n/routing';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +15,14 @@ export default function Footer() {
   const navigationRef = useRef<HTMLDivElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
   const copyrightRef = useRef<HTMLDivElement>(null);
+
+  const pathname = usePathname();
+  const isAuthPage = pathname.startsWith('/auth');
+  const isAdminPage = pathname.startsWith('/admin');
+
+  if (isAuthPage || isAdminPage) {
+    return null;
+  }
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -189,7 +199,7 @@ export default function Footer() {
           <div ref={logoRef} className="lg:col-span-2">
             <div className="mb-6">
               <Image
-                src="/img/gobai-white-logo.png"
+                src={logoImg}
                 alt="Gobai"
                 width={180}
                 height={72}

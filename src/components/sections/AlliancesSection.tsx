@@ -51,11 +51,11 @@ const AlliancesSection = () => {
 	// Actual alliance logos from public/img/alianzas
 	const alliances = [
 		{ name: 'COHEP', image: '/img/alianzas/cohep.png', isWhiteLogo: false },
-		{ name: 'Expo Horeca', image: '/img/alianzas/expo horeca.png', isWhiteLogo: true },
+		{ name: 'Expo Horeca', image: '/img/alianzas/expo%20horeca.png', isWhiteLogo: true },
 		{ name: 'Horeca', image: '/img/alianzas/horeca.jpg', isWhiteLogo: false },
-		{ name: 'Rome Theory', image: '/img/alianzas/rome theory.png', isWhiteLogo: false },
+		{ name: 'Rome Theory', image: '/img/alianzas/rome%20theory.png', isWhiteLogo: false },
 		{ name: 'SICON', image: '/img/alianzas/sicon.png', isWhiteLogo: false },
-		{ name: 'UTH Florida University', image: '/img/alianzas/uth flo.png', isWhiteLogo: false },
+		{ name: 'UTH Florida University', image: '/img/alianzas/uth%20flo.png', isWhiteLogo: false },
 		{ name: 'UTH', image: '/img/alianzas/uth.png', isWhiteLogo: false }
 	];
 

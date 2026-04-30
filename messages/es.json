@@ -1,6 +1,7 @@
 {
   "Navbar": {
     "home": "Inicio",
+    "blog": "Blog",
     "services": "Servicios",
     "successCases": "Casos de éxito",
     "contact": "Contacto",
@@ -280,6 +281,23 @@
     "final": {
       "title": "Su Éxito Político Comienza con una Conversación",
       "subtitle": "Miles de líderes políticos ya confían en GOBAI para transformar sus estrategias. Únase a ellos y descubra el poder de la inteligencia artificial aplicada a la política."
+    }
+  },
+  "Blog": {
+    "hero": {
+      "title": "Perspectivas para el Futuro de la Política",
+      "subtitle": "Descubre análisis profundos, tendencias y estrategias impulsadas por IA. Mantente a la vanguardia con nuestras perspectivas expertas sobre el panorama político digital.",
+      "cta": "Explorar Artículos"
+    },
+    "latest": "Últimos Artículos",
+    "readMore": "Leer Más",
+    "noPosts": "No se encontraron artículos.",
+    "by": "Por",
+    "back": "Volver al Blog",
+    "share": "Compartir este artículo",
+    "footer": {
+      "title": "¿Listo para llevar tu estrategia <cyan>al siguiente nivel?</cyan>",
+      "cta": "Hablar con un experto"
     }
   }
 }

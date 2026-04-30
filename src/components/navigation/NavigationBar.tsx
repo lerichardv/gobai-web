@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import Image from 'next/image';
+import logoImg from '../../../public/img/gobai-white-logo.png';
 import { Link, usePathname } from '@/i18n/routing';
 import { useTranslations, useLocale } from 'next-intl';
+import { RiArticleLine } from '@remixicon/react';
 
 export default function NavigationBar() {
 	const t = useTranslations('Navbar');
@@ -17,6 +19,12 @@ export default function NavigationBar() {
 	const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
 
 	const pathname = usePathname();
+	const isAuthPage = pathname.startsWith('/auth');
+	const isAdminPage = pathname.startsWith('/admin');
+
+	if (isAuthPage || isAdminPage) {
+		return null;
+	}
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -86,6 +94,20 @@ export default function NavigationBar() {
 				<div className="hidden lg:flex items-center justify-between h-20 w-full relative">
 					{/* Left Navigation Items - Moved Closer to Logo */}
 					<div ref={menuRef} className="flex-1 flex items-center justify-end space-x-6 pr-12">
+						{/* Blog Button with Gradient moved to the start */}
+						<Link 
+							href="/blog" 
+							className="group relative px-6 py-2.5 rounded-full text-sm font-bold text-white transition-all duration-300 hover:scale-105 active:scale-95"
+						>
+							<div 
+								className="absolute inset-0 rounded-full bg-gradient-to-r from-gobai-blue-dark via-gobai-turquoise to-gobai-cyan shadow-[0_4px_15px_rgba(31,170,163,0.3)] group-hover:shadow-[0_8px_25px_rgba(31,170,163,0.5)] transition-all duration-300"
+							/>
+							<span className="relative z-10 flex items-center gap-2">
+								<RiArticleLine className="w-4 h-4" />
+								{t('blog')}
+							</span>
+						</Link>
+
 						{navItems.slice(0, 2).map((item) => (
 							<div key={item.name} className="relative group">
 								<Link
@@ -152,7 +174,7 @@ export default function NavigationBar() {
 					<div ref={logoRef} className="flex-none flex items-center justify-center">
 						<Link href="/" className="relative group cursor-pointer">
 							<Image
-								src="/img/gobai-white-logo.png"
+								src={logoImg}
 								alt="Gobai"
 								width={140}
 								height={56}
@@ -171,7 +193,7 @@ export default function NavigationBar() {
 						</Link>
 					</div>
 
-					{/* Right Navigation Items - Moved Closer to Logo + Lang Picker */}
+					{/* Right Navigation Items */}
 					<div className="flex-1 flex items-center justify-start space-x-6 pl-12">
 						{navItems.slice(2).map((item) => (
 							<div key={item.name} className="relative group">
@@ -206,8 +228,8 @@ export default function NavigationBar() {
 								</Link>
 							</div>
 						))}
-
-						{/* Language Picker */}
+						
+						{/* Language Picker Moved to the end */}
 						<div className="flex items-center space-x-2 ml-4 p-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
 							<Link 
 								href={pathname} 
@@ -233,7 +255,7 @@ export default function NavigationBar() {
 					<div className="flex items-center">
 						<Link href="/" className="relative group cursor-pointer">
 							<Image
-								src="/img/gobai-white-logo.png"
+								src={logoImg}
 								alt="Gobai"
 								width={140}
 								height={56}
@@ -290,7 +312,7 @@ export default function NavigationBar() {
 				<div className="flex items-center justify-between p-6 border-b border-white/10">
 					<Link href="/" className="cursor-pointer">
 						<Image
-							src="/img/gobai-white-logo.png"
+							src={logoImg}
 							alt="Gobai"
 							width={140}
 							height={56}

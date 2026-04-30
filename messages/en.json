@@ -1,6 +1,7 @@
 {
   "Navbar": {
     "home": "Home",
+    "blog": "Blog",
     "services": "Services",
     "successCases": "Success Stories",
     "contact": "Contact",
@@ -275,6 +276,23 @@
     "final": {
       "title": "Your Political Success Begins with a Conversation",
       "subtitle": "Thousands of political leaders already trust GOBAI to transform their strategies. Join them and discover the power of artificial intelligence applied to politics."
+    }
+  },
+  "Blog": {
+    "hero": {
+      "title": "Insights for the Future of Politics",
+      "subtitle": "Discover deep analysis, trends, and strategies powered by AI. Stay ahead with our expert perspectives on the digital political landscape.",
+      "cta": "Explore Articles"
+    },
+    "latest": "Latest Articles",
+    "readMore": "Read More",
+    "noPosts": "No articles found.",
+    "by": "By",
+    "back": "Back to Blog",
+    "share": "Share this article",
+    "footer": {
+      "title": "Ready to take your strategy <cyan>to the next level?</cyan>",
+      "cta": "Speak with an expert"
     }
   }
 }

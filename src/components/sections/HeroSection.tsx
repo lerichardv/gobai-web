@@ -4,7 +4,9 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import Image from 'next/image';
+import personImg from '../../../public/img/person.png';
 
 if (typeof window !== 'undefined') {
 	gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -12,6 +14,7 @@ if (typeof window !== 'undefined') {
 
 export default function HeroSection() {
 	const t = useTranslations('Hero');
+	const locale = useLocale();
 	const heroRef = useRef<HTMLDivElement>(null);
 	const logoRef = useRef<HTMLDivElement>(null);
 	const titleRef = useRef<HTMLHeadingElement>(null);
@@ -60,7 +63,15 @@ export default function HeroSection() {
 			}
 
 			// Timeline for initial animations
-			const tl = gsap.timeline();
+			const tl = gsap.timeline({
+				onComplete: () => {
+					const smoother = (gsap as any).ScrollSmoother?.get();
+					if (smoother) {
+						smoother.paused(false);
+					}
+					document.body.style.overflow = 'auto';
+				}
+			});
 
 			// Background gradient animation
 			// Using CSS animate-gradient instead of GSAP for performance
@@ -130,8 +141,9 @@ export default function HeroSection() {
 
 		return () => {
 			ctx.revert();
+			document.body.style.overflow = 'auto';
 		};
-	}, []);
+	}, [locale]);
 
 	return (
 		<div
@@ -148,18 +160,19 @@ export default function HeroSection() {
 			/>
 			
 			{/* Person Image with Wave & Flicker */}
+			{/* Person Image with Wave & Flicker */}
 			<div ref={personRef} id="person-background" data-speed="0.8" className="absolute inset-0 pointer-events-none z-0">
 				{/* Base image */}
 				<div 
 					className="absolute inset-0 -translate-x-50 md:-translate-x-0 bg-bottom-left bg-no-repeat bg-size-[200%] sm:bg-size-[80%] hover:scale-105 transition-transform duration-[10s]" 
-					style={{ backgroundImage: 'url("/img/person.png")', opacity: 0.75 }}
+					style={{ backgroundImage: `url(${personImg.src})`, opacity: 0.75 }}
 				></div>
 				
 				{/* Bright scanning wave overlay */}
 				<div 
 					className="absolute inset-0 -translate-x-50 md:-translate-x-0 bg-bottom-left bg-no-repeat bg-size-[200%] sm:bg-size-[80%] animate-scan-wave mix-blend-screen" 
 					style={{ 
-						backgroundImage: 'url("/img/person.png")',
+						backgroundImage: `url(${personImg.src})`,
 						filter: 'drop-shadow(0 0 15px rgba(99, 198, 252, 0.8)) hue-rotate(15deg)' 
 					}}
 				></div>
