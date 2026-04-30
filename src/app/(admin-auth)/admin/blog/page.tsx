@@ -7,6 +7,7 @@ import { revalidatePath } from "next/cache"
 import { DeletePostButton } from "@/components/admin/blog/delete-post-button"
 import { TablePagination } from "@/components/admin/table-pagination"
 import { CopyLinkButton } from "@/components/admin/blog/copy-link-button"
+import { BlogFilters } from "@/components/admin/blog/blog-filters"
 
 export const metadata = {
   title: "Blog | Administración",
@@ -16,10 +17,15 @@ export const metadata = {
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-  const page = typeof searchParams.page === 'string' ? parseInt(searchParams.page) : 1
-  const { posts, totalPages, total } = await getBlogPosts(page)
+  const resolvedSearchParams = await searchParams
+  const page = typeof resolvedSearchParams.page === 'string' ? parseInt(resolvedSearchParams.page) : 1
+  const search = typeof resolvedSearchParams.search === 'string' ? resolvedSearchParams.search : undefined
+  const language = typeof resolvedSearchParams.language === 'string' ? resolvedSearchParams.language : undefined
+  const status = typeof resolvedSearchParams.status === 'string' ? resolvedSearchParams.status : undefined
+  
+  const { posts, totalPages, total } = await getBlogPosts(page, 10, search, language, status)
 
   return (
     <div className="space-y-8">
@@ -35,6 +41,8 @@ export default async function BlogPage({
           </Link>
         </Button>
       </div>
+
+      <BlogFilters />
 
       <Card className="border-white/10 bg-white/5 backdrop-blur-sm">
         <CardHeader>

@@ -9,6 +9,8 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 
+import { useSearchParams } from "next/navigation"
+
 interface TablePaginationProps {
   totalPages: number
   currentPage: number
@@ -16,12 +18,13 @@ interface TablePaginationProps {
 }
 
 export function TablePagination({ totalPages, currentPage, baseUrl }: TablePaginationProps) {
+  const searchParams = useSearchParams()
   if (totalPages <= 1) return null
 
   const createPageUrl = (page: number) => {
-    const url = new URL(baseUrl, window.location.origin)
-    url.searchParams.set("page", page.toString())
-    return url.pathname + url.search
+    const params = new URLSearchParams(searchParams.toString())
+    params.set("page", page.toString())
+    return `${baseUrl}?${params.toString()}`
   }
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1)

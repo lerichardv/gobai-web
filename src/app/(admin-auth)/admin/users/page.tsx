@@ -17,9 +17,10 @@ export const metadata = {
 export default async function UsersPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-  const page = typeof searchParams.page === 'string' ? parseInt(searchParams.page) : 1
+  const resolvedSearchParams = await searchParams
+  const page = typeof resolvedSearchParams.page === 'string' ? parseInt(resolvedSearchParams.page) : 1
   const { users, totalPages, total } = await getAllUsers(page)
   const session = await getServerSession(authOptions)
 

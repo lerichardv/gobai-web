@@ -6,11 +6,36 @@ import { revalidatePath } from "next/cache"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 
-export async function getBlogPosts(page: number = 1, pageSize: number = 10) {
+export async function getBlogPosts(
+  page: number = 1, 
+  pageSize: number = 10,
+  search?: string,
+  language?: string,
+  status?: string
+) {
   const skip = (page - 1) * pageSize
+  
+  const where: any = {}
+  
+  if (search) {
+    where.OR = [
+      { title: { contains: search, mode: 'insensitive' } },
+      { slug: { contains: search, mode: 'insensitive' } }
+    ]
+  }
+  
+  if (language && language !== 'all') {
+    where.language = language
+  }
+  
+  if (status && status !== 'all') {
+    where.published = status === 'published'
+  }
+
   try {
     const [posts, total] = await Promise.all([
       prisma.post.findMany({
+        where,
         skip,
         take: pageSize,
         include: {
@@ -28,7 +53,7 @@ export async function getBlogPosts(page: number = 1, pageSize: number = 10) {
           createdAt: "desc"
         }
       }),
-      prisma.post.count()
+      prisma.post.count({ where })
     ])
     return { 
       posts, 

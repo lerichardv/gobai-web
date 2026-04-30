@@ -25,6 +25,13 @@ export function ImageUploadField({ label, value, onChange, description }: ImageU
     const file = e.target.files?.[0]
     if (!file) return
 
+    // 10MB limit check
+    if (file.size > 10 * 1024 * 1024) {
+      toast.error("La imagen es demasiado grande. El tamaño máximo permitido es 10MB.")
+      if (fileInputRef.current) fileInputRef.current.value = ""
+      return
+    }
+
     setIsUploading(true)
     const formData = new FormData()
     formData.append("file", file)

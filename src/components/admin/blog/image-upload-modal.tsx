@@ -32,6 +32,12 @@ export function ImageUploadModal({ onSelect }: ImageUploadModalProps) {
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
+      // 10MB limit check
+      if (file.size > 10 * 1024 * 1024) {
+        toast.error("La imagen es demasiado grande. El tamaño máximo permitido es 10MB.")
+        if (fileInputRef.current) fileInputRef.current.value = ""
+        return
+      }
       setSelectedFile(file)
       const reader = new FileReader()
       reader.onloadend = () => {

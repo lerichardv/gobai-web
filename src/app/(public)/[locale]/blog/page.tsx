@@ -172,9 +172,9 @@ export default function BlogListPage() {
         <div className="max-w-7xl mx-auto px-6 hero-content relative z-10 text-center text-white">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm text-gobai-cyan text-sm font-bold uppercase tracking-widest mb-8">
             <span className="w-2 h-2 rounded-full bg-gobai-cyan animate-pulse" />
-            Blog Oficial
+            Actualidad
           </div>
-          <h1 className="text-5xl md:text-7xl font-display font-semibold mb-8 uppercase">
+          <h1 className="text-3xl md:text-5xl font-display font-bold mb-8 uppercase tracking-tight">
             {t('hero.title')}
           </h1>
           <p className="text-lg md:text-xl text-white/70 max-w-4xl mx-auto mb-12 leading-relaxed">
@@ -259,7 +259,7 @@ export default function BlogListPage() {
                         </span>
                       </div>
 
-                      <h3 className="text-2xl md:text-4xl font-display font-bold text-gobai-blue-dark mb-6 group-hover:text-gobai-cyan transition-colors  uppercase">
+                      <h3 className="text-2xl md:text-4xl font-display font-bold text-gobai-blue-dark mb-6 group-hover:text-gobai-cyan transition-colors uppercase line-clamp-2 leading-tight">
                         {post.title}
                       </h3>
                       

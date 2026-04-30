@@ -280,11 +280,11 @@
   },
   "Blog": {
     "hero": {
-      "title": "Insights for the Future of Politics",
+      "title": "GOBAI Blog: The Future of Politics with AI",
       "subtitle": "Discover deep analysis, trends, and strategies powered by AI. Stay ahead with our expert perspectives on the digital political landscape.",
       "cta": "Explore Articles"
     },
-    "latest": "Latest Articles",
+    "latest": "Latest GOBAI News",
     "readMore": "Read More",
     "noPosts": "No articles found.",
     "by": "By",
