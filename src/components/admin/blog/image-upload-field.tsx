@@ -112,8 +112,8 @@ export function ImageUploadField({ label, value, onChange, description }: ImageU
                 </div>
               )}
               <div className="text-center">
-                <div className="text-sm font-bold text-white/80">Click para subir</div>
-                <div className="text-xs text-white/40">PNG, JPG o WebP</div>
+                <p className="text-sm font-bold text-white/80">Haz clic para subir</p>
+                <p className="text-xs text-white/40 mt-1">PNG, JPG o WebP (Máx. 10MB)</p>
               </div>
             </div>
           ) : (

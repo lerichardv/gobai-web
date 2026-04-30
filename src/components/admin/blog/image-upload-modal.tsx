@@ -137,7 +137,7 @@ export function ImageUploadModal({ onSelect }: ImageUploadModalProps) {
                 </div>
                 <div className="text-center">
                   <p className="text-sm font-bold text-white/80">Haz clic para subir</p>
-                  <p className="text-xs text-white/40 mt-1">o arrastra y suelta aquí</p>
+                  <p className="text-xs text-white/40 mt-1">PNG, JPG o WebP (Máx. 10MB)</p>
                 </div>
                 <input 
                   type="file" 

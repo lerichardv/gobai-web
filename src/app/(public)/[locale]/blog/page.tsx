@@ -17,7 +17,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadFull } from "tsparticles";
 import { type Container, type ISourceOptions, type Engine } from "@tsparticles/engine";
 import { getPublishedBlogPosts } from '@/app/actions/blog';
-import { getAuthorDisplayName } from '@/lib/blog-utils';
+import { getAuthorDisplayName, stripHtml } from '@/lib/blog-utils';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -203,10 +203,10 @@ export default function BlogListPage() {
       <section id="posts-section" className="py-24 bg-[#f8fafc]">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-16 gap-6">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gobai-blue-dark uppercase tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-gobai-blue-dark uppercase">
               {searchQuery ? (locale === 'es' ? 'Resultados' : 'Results') : t('latest')}
             </h2>
-            <div className="px-4 py-2 rounded-xl bg-white border border-gray-100 shadow-sm text-gray-400 text-[10px] font-black uppercase tracking-widest">
+            <div className="px-4 py-2 rounded-xl bg-white border border-gray-100 shadow-sm text-gray-400 text-[10px] font-black uppercase">
               {filteredPosts.length} {locale === 'es' ? 'Artículos' : 'Articles'}
             </div>
           </div>
@@ -240,7 +240,7 @@ export default function BlogListPage() {
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute top-6 left-6 z-20">
-                        <span className="px-4 py-2 rounded-xl bg-gobai-blue-dark/80 backdrop-blur-md text-gobai-cyan text-[10px] font-black uppercase tracking-[0.2em] shadow-lg border border-white/10">
+                        <span className="px-4 py-2 rounded-xl bg-gobai-blue-dark/80 backdrop-blur-md text-gobai-cyan text-[10px] font-black uppercase shadow-lg border border-white/10">
                           Tecnología
                         </span>
                       </div>
@@ -248,7 +248,7 @@ export default function BlogListPage() {
                     
                     {/* Right: Content */}
                     <div className="p-8 md:p-12 flex-1 flex flex-col justify-center">
-                      <div className="flex items-center gap-6 text-gray-400 text-[10px] mb-6 uppercase tracking-[0.2em] font-black">
+                      <div className="flex items-center gap-6 text-gray-400 text-[10px] mb-6 uppercase font-black">
                         <span className="flex items-center gap-2">
                           <RiCalendarLine className="h-4 w-4 text-gobai-cyan" />
                           {new Date(post.createdAt).toLocaleDateString(locale === 'es' ? 'es-ES' : 'en-US')}
@@ -259,12 +259,12 @@ export default function BlogListPage() {
                         </span>
                       </div>
 
-                      <h3 className="text-2xl md:text-4xl font-display font-bold text-gobai-blue-dark mb-6 group-hover:text-gobai-cyan transition-colors leading-tight uppercase tracking-tight">
+                      <h3 className="text-2xl md:text-4xl font-display font-bold text-gobai-blue-dark mb-6 group-hover:text-gobai-cyan transition-colors  uppercase">
                         {post.title}
                       </h3>
                       
                       <p className="text-gray-500 line-clamp-2 mb-8 text-lg leading-relaxed">
-                        Explora las últimas tendencias en inteligencia artificial aplicada al liderazgo político y la incidencia empresarial...
+                        {stripHtml(post.content)}
                       </p>
                       
                       <div className="mt-auto flex items-center justify-between">

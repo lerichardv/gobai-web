@@ -25,3 +25,20 @@ export function getAuthorDisplayName(user: {
       return name || email || "Autor"
   }
 }
+
+/**
+ * Strips HTML tags from a string and ignores headings for excerpts.
+ */
+export function stripHtml(html: string) {
+  if (!html) return ''
+  
+  // Remove heading tags and their content
+  const noHeadings = html.replace(/<h[1-6][^>]*>.*?<\/h[1-6]>/gi, '')
+  
+  // Strip remaining tags and handle entities
+  return noHeadings
+    .replace(/<[^>]*>/g, ' ') // Replace tags with space to avoid merging words
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ') // Collapse multiple spaces
+    .trim()
+}
