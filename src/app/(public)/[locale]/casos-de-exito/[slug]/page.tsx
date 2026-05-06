@@ -189,71 +189,85 @@ export default function SuccessCaseDetailPage() {
               </div>
             )}
 
-            <div className="flex items-center gap-4 ml-auto">
-              <a 
-                href="https://www.facebook.com/people/GOBAI/61578267635547/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:bg-gobai-cyan hover:text-white hover:border-gobai-cyan transition-all group"
-                title="Follow on Facebook"
-              >
-                <RiFacebookCircleFill className="h-6 w-6 group-hover:scale-110 transition-transform" />
-              </a>
-              <a 
-                href="https://www.instagram.com/gobai.la" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:bg-gobai-cyan hover:text-white hover:border-gobai-cyan transition-all group"
-                title="Follow on Instagram"
-              >
-                <RiInstagramLine className="h-6 w-6 group-hover:scale-110 transition-transform" />
-              </a>
-              <button 
-                onClick={copyToClipboard}
-                className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:bg-gobai-cyan hover:text-white hover:border-gobai-cyan transition-all group relative"
-                title="Copy Link"
-              >
-                <RiLinksLine className="h-6 w-6 group-hover:scale-110 transition-transform" />
-                {copied && (
-                  <div className="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-gobai-cyan text-[#00040a] text-[10px] font-black uppercase tracking-widest rounded-lg animate-in fade-in zoom-in slide-in-from-bottom-2 duration-300">
-                    {locale === 'es' ? 'Copiado' : 'Copied'}
-                  </div>
-                )}
-              </button>
-            </div>
+            {/* Social buttons removed from here as they are now in the sticky sidebar */}
           </div>
         </div>
       </section>
 
       {/* Case Content Section */}
       <section className="py-32 bg-white relative">
-        <div className="max-w-5xl mx-auto px-6 main-content">
-          {/* Multi-image Gallery or Intro Image */}
-          {caseData.images && caseData.images.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-              {caseData.images.slice(0, 2).map((img: string, idx: number) => (
-                <div key={idx} className="relative aspect-video rounded-[3rem] overflow-hidden shadow-2xl group border border-gray-100">
-                  <Image 
-                    src={img} 
-                    alt={`${caseData.title} ${idx + 1}`} 
-                    fill 
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-              ))}
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-16">
+          {/* Share Sidebar */}
+          <div className="md:w-16 flex flex-row md:flex-col items-center gap-6 md:sticky md:top-32 h-fit">
+            <div 
+              className="text-[10px] font-black uppercase tracking-widest text-gray-300 hidden md:block mb-4"
+              style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+            >
+              {locale === 'es' ? 'Compartir' : 'Share'}
             </div>
-          )}
-
-          {/* Description / Summary */}
-          <div className="text-2xl md:text-3xl font-display font-medium text-gobai-blue-dark mb-16 leading-relaxed border-l-4 border-gobai-cyan pl-8 py-4 italic">
-            {caseData.description}
+            <a 
+              href="https://www.facebook.com/people/GOBAI/61578267635547/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:bg-gobai-cyan hover:text-white hover:border-gobai-cyan transition-all"
+              title="Follow on Facebook"
+            >
+              <RiFacebookCircleFill className="h-5 w-5" />
+            </a>
+            <a 
+              href="https://www.instagram.com/gobai.la" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:bg-gobai-cyan hover:text-white hover:border-gobai-cyan transition-all"
+              title="Follow on Instagram"
+            >
+              <RiInstagramLine className="h-5 w-5" />
+            </a>
+            <div className="relative">
+              <button 
+                onClick={copyToClipboard}
+                className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:bg-gobai-cyan hover:text-white hover:border-gobai-cyan transition-all"
+                title="Copy Link"
+              >
+                <RiLinksLine className="h-5 w-5" />
+              </button>
+              {copied && (
+                <div className="absolute left-full ml-4 md:left-auto md:ml-0 md:-top-10 md:left-1/2 md:-translate-x-1/2 px-3 py-1 bg-gobai-blue-dark text-white text-[10px] font-black uppercase tracking-widest rounded-lg animate-in fade-in zoom-in slide-in-from-bottom-2 duration-300">
+                  {locale === 'es' ? 'Copiado' : 'Copied'}
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* Rich Text Content */}
-          <div 
-            className="tiptap-content max-w-4xl mx-auto text-lg md:text-xl text-gray-700 leading-loose prose prose-blue prose-xl"
-            dangerouslySetInnerHTML={{ __html: caseData.content }}
-          />
+          {/* Main Content */}
+          <div className="flex-1 main-content">
+            {/* Multi-image Gallery or Intro Image */}
+            {caseData.images && caseData.images.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+                {caseData.images.slice(0, 2).map((img: string, idx: number) => (
+                  <div key={idx} className="relative aspect-video rounded-[3rem] overflow-hidden shadow-2xl group border border-gray-100">
+                    <Image 
+                      src={img} 
+                      alt={`${caseData.title} ${idx + 1}`} 
+                      fill 
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Description / Summary */}
+            <div className="text-2xl md:text-3xl font-display font-medium text-gobai-blue-dark mb-16 leading-relaxed border-l-4 border-gobai-cyan pl-8 py-4 italic">
+              {caseData.description}
+            </div>
+
+            {/* Rich Text Content */}
+            <div 
+              className="tiptap-content text-lg md:text-xl text-gray-700 leading-loose prose prose-blue prose-xl"
+              dangerouslySetInnerHTML={{ __html: caseData.content }}
+            />
+          </div>
         </div>
       </section>
 
