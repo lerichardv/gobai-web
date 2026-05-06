@@ -209,34 +209,16 @@ export default function BlogPostDetailPage() {
               {t('share')}
             </div>
             <a 
-              href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post?.title || '')}`}
+              href="https://www.facebook.com/people/GOBAI/61578267635547/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:bg-gobai-cyan hover:text-white hover:border-gobai-cyan transition-all"
-              title="Share on X"
-            >
-              <RiTwitterXFill className="h-5 w-5" />
-            </a>
-            <a 
-              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:bg-gobai-cyan hover:text-white hover:border-gobai-cyan transition-all"
-              title="Share on Facebook"
+              title="Follow on Facebook"
             >
               <RiFacebookCircleFill className="h-5 w-5" />
             </a>
             <a 
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:bg-gobai-cyan hover:text-white hover:border-gobai-cyan transition-all"
-              title="Share on LinkedIn"
-            >
-              <RiLinkedinBoxFill className="h-5 w-5" />
-            </a>
-            <a 
-              href="https://www.instagram.com/gobai.ai" 
+              href="https://www.instagram.com/gobai.la" 
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:bg-gobai-cyan hover:text-white hover:border-gobai-cyan transition-all"

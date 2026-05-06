@@ -5,9 +5,10 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { RiMailLine, RiPhoneLine, RiMapPinLine, RiSendPlaneLine } from '@remixicon/react';
+import { RiMailLine, RiPhoneLine, RiMapPinLine } from '@remixicon/react';
 import { Particles, initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import { ContactForm } from '@/components/forms/ContactForm';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -158,47 +159,8 @@ export default function ContactoPage() {
 
           <div className="flex flex-col lg:flex-row gap-12 items-stretch">
             {/* Form Card */}
-            <div className="hero-animate flex-1 bg-white/5 backdrop-blur-2xl rounded-[40px] border border-white/10 p-10 shadow-2xl">
-              <form className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-sm font-bold text-white uppercase tracking-widest">{t('hero.form.name')}</label>
-                    <input 
-                      type="text" 
-                      placeholder={t('hero.form.namePlaceholder')}
-                      className="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gobai-cyan transition-colors"
-                    />
-                  </div>
-                  <div className="space-y-3">
-                    <label className="text-sm font-bold text-white uppercase tracking-widest">{t('hero.form.email')}</label>
-                    <input 
-                      type="email" 
-                      placeholder={t('hero.form.emailPlaceholder')}
-                      className="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gobai-cyan transition-colors"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <label className="text-sm font-bold text-white uppercase tracking-widest">{t('hero.form.phone')}</label>
-                  <input 
-                    type="text" 
-                    placeholder={t('hero.form.phonePlaceholder')}
-                    className="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gobai-cyan transition-colors"
-                  />
-                </div>
-                <div className="space-y-3">
-                  <label className="text-sm font-bold text-white uppercase tracking-widest">{t('hero.form.message')}</label>
-                  <textarea 
-                    rows={4}
-                    placeholder={t('hero.form.messagePlaceholder')}
-                    className="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-gobai-cyan transition-colors resize-none"
-                  />
-                </div>
-                <button className="w-full py-5 bg-gradient-to-r from-gobai-cyan via-gobai-turquoise to-gobai-cyan text-[#00040a] font-black rounded-2xl shadow-[0_0_40px_rgba(98,228,255,0.4)] hover:shadow-[0_0_60px_rgba(98,228,255,0.6)] transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-sm">
-                  <RiSendPlaneLine size={20} />
-                  {t('hero.form.submit')}
-                </button>
-              </form>
+            <div className="hero-animate flex-1">
+              <ContactForm />
             </div>
 
             {/* Image Card */}
@@ -234,7 +196,7 @@ export default function ContactoPage() {
             {t('channels.subtitle')}
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {[1, 2, 3].map(i => (
               <div key={i} className="group p-12 bg-[#f8fafc] rounded-[48px] border border-gray-100 shadow-xl hover:-translate-y-2 transition-all duration-500">
                 <div className="w-16 h-16 rounded-2xl bg-gobai-cyan/10 flex items-center justify-center text-gobai-cyan mx-auto mb-8 group-hover:bg-gobai-cyan group-hover:text-white transition-colors duration-300">
@@ -254,6 +216,31 @@ export default function ContactoPage() {
                 <div className="mt-8 mx-auto w-12 h-1 bg-gobai-cyan/20 group-hover:w-24 group-hover:bg-gobai-cyan transition-all duration-500" />
               </div>
             ))}
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6 mt-12">
+            <a 
+              href="https://www.facebook.com/people/GOBAI/61578267635547/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 px-8 py-4 bg-[#f8fafc] rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+            >
+              <div className="w-10 h-10 rounded-xl bg-[#1877F2]/10 flex items-center justify-center text-[#1877F2] group-hover:bg-[#1877F2] group-hover:text-white transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </div>
+              <span className="font-bold text-gobai-blue-dark">Facebook</span>
+            </a>
+            <a 
+              href="https://www.instagram.com/gobai.la" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 px-8 py-4 bg-[#f8fafc] rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+            >
+              <div className="w-10 h-10 rounded-xl bg-[#E4405F]/10 flex items-center justify-center text-[#E4405F] group-hover:bg-[#E4405F] group-hover:text-white transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </div>
+              <span className="font-bold text-gobai-blue-dark">Instagram</span>
+            </a>
           </div>
         </div>
       </section>

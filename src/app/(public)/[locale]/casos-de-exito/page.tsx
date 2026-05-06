@@ -1,19 +1,25 @@
 'use client';
 
 import { useEffect, useRef, useMemo, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Particles, initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+
+import { getSuccessCases } from '@/app/actions/success-cases';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CasosDeExitoPage() {
   const t = useTranslations('CasosDeExito');
   const containerRef = useRef<HTMLDivElement>(null);
+  const locale = useLocale();
   const [init, setInit] = useState(false);
+  const [cases, setCases] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -21,7 +27,14 @@ export default function CasosDeExitoPage() {
     }).then(() => {
       setInit(true);
     });
-  }, []);
+
+    const fetchCases = async () => {
+      const data = await getSuccessCases(locale as any);
+      setCases(data);
+      setIsLoading(false);
+    };
+    fetchCases();
+  }, [locale]);
 
   const particlesOptions = useMemo(() => ({
     background: { color: "transparent" },
@@ -50,6 +63,8 @@ export default function CasosDeExitoPage() {
   }), []);
 
   useEffect(() => {
+    if (isLoading) return;
+
     const ctx = gsap.context(() => {
       // Hero Animations
       const tl = gsap.timeline();
@@ -146,8 +161,8 @@ export default function CasosDeExitoPage() {
 
           <div className="stats-container grid grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, i) => (
-              <div key={i} className="stat-card group relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl hover:border-gobai-cyan/50 hover:bg-white/10">
-                <div className="mb-4 inline-flex items-center justify-center p-3 rounded-2xl bg-gradient-to-br from-gobai-blue/20 to-gobai-cyan/20 text-gobai-cyan group-hover:scale-110">
+              <div key={i} className="stat-card group relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl hover:border-gobai-cyan/50 hover:bg-white/10 transition-all duration-500">
+                <div className="mb-4 inline-flex items-center justify-center p-3 rounded-2xl bg-gradient-to-br from-gobai-blue/20 to-gobai-cyan/20 text-gobai-cyan group-hover:scale-110 transition-transform duration-500">
                   {stat.icon}
                 </div>
                 <div className="text-3xl md:text-4xl font-display font-bold text-white mb-2">
@@ -157,7 +172,7 @@ export default function CasosDeExitoPage() {
                   {t(`hero.${stat.key}Label`)}
                 </div>
                 {/* Glow effect */}
-                <div className="absolute inset-0 rounded-3xl bg-gobai-cyan/5 opacity-0 group-hover:opacity-100 blur-xl" />
+                <div className="absolute inset-0 rounded-3xl bg-gobai-cyan/5 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
               </div>
             ))}
           </div>
@@ -177,46 +192,64 @@ export default function CasosDeExitoPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="project-card group bg-[#f8fafc] rounded-[40px] overflow-hidden border border-gray-100 shadow-xl hover:-translate-y-2 hover:shadow-2xl">
-                <div className="relative h-64 overflow-hidden">
-                  <Image 
-                    src="/img/team.jpg" 
-                    alt="Project" 
-                    fill 
-                    className="object-cover group-hover:scale-110" 
-                  />
-                  <div className="absolute top-6 left-6 px-4 py-2 bg-gobai-turquoise text-white text-xs font-bold rounded-full uppercase tracking-widest shadow-lg">
-                    {t('projects.tag')}
-                  </div>
-                </div>
-                
-                <div className="p-10">
-                  <h3 className="text-2xl font-display font-bold text-gobai-blue-dark mb-4 leading-tight group-hover:text-gobai-turquoise">
-                    {t('projects.cardTitle')}
-                  </h3>
-                  <p className="text-gray-600 mb-8 leading-relaxed">
-                    {t('projects.cardDesc')}
-                  </p>
-                  
-                  <div className="flex items-center justify-between pt-6 border-t border-gray-200">
-                    <div className="flex flex-col">
-                      <span className="text-xs text-gray-400 uppercase tracking-widest mb-1 flex items-center gap-1">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        {t('projects.location')}
-                      </span>
-                      <span className="text-xs text-gray-400 uppercase tracking-widest flex items-center gap-1">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        {t('projects.date')}
-                      </span>
-                    </div>
-                    <button className="px-6 py-3 bg-white text-gobai-blue-dark border border-gobai-blue-dark/20 text-xs font-bold rounded-full hover:bg-gobai-blue-dark hover:text-white hover:border-transparent uppercase tracking-widest">
-                      {t('projects.cta')}
-                    </button>
-                  </div>
-                </div>
+            {isLoading ? (
+              // Skeleton loading state
+              [1, 2, 3].map((i) => (
+                <div key={i} className="bg-gray-50 h-96 rounded-[40px] animate-pulse" />
+              ))
+            ) : cases.length === 0 ? (
+              <div className="col-span-full py-20 text-center">
+                <p className="text-gray-400 font-medium">No se encontraron casos de éxito publicados.</p>
               </div>
-            ))}
+            ) : (
+              cases.map((caseItem) => (
+                <div key={caseItem.id} className="project-card group bg-[#f8fafc] rounded-[40px] overflow-hidden border border-gray-100 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+                  <div className="relative h-64 overflow-hidden">
+                    <Image 
+                      src={caseItem.mainImage || "/img/team.jpg"} 
+                      alt={caseItem.title} 
+                      fill 
+                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" 
+                    />
+                    {caseItem.tag && (
+                      <div className="absolute top-6 left-6 px-4 py-2 bg-gobai-turquoise text-white text-xs font-bold rounded-full uppercase tracking-widest shadow-lg">
+                        {caseItem.tag}
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="p-10">
+                    <Link href={`/casos-de-exito/${caseItem.slug}`}>
+                      <h3 className="text-2xl font-display font-bold text-gobai-blue-dark mb-4 leading-tight group-hover:text-gobai-turquoise transition-colors duration-300 cursor-pointer">
+                        {caseItem.title}
+                      </h3>
+                    </Link>
+                    <p className="text-gray-600 mb-8 leading-relaxed line-clamp-3">
+                      {caseItem.description}
+                    </p>
+                    
+                    <div className="flex items-center justify-between pt-6 border-t border-gray-200">
+                      <div className="flex flex-col">
+                        <span className="text-xs text-gray-400 uppercase tracking-widest mb-1 flex items-center gap-1">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                          {caseItem.location || 'Honduras'}
+                        </span>
+                        <span className="text-xs text-gray-400 uppercase tracking-widest flex items-center gap-1">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                          {caseItem.date || new Date(caseItem.createdAt).toLocaleDateString()}
+                        </span>
+                      </div>
+                      <Link 
+                        href={`/casos-de-exito/${caseItem.slug}`}
+                        className="px-6 py-3 bg-white text-gobai-blue-dark border border-gobai-blue-dark/20 text-xs font-bold rounded-full hover:bg-gobai-blue-dark hover:text-white hover:border-transparent uppercase tracking-widest transition-all duration-300"
+                      >
+                        {t('projects.cta')}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </section>

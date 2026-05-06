@@ -14,7 +14,11 @@
     "title": "Govern and lead better With real data",
     "subtitle": "Artificial intelligence for political and <bold>corporate</bold> advocacy",
     "ctaStart": "Get Started Today",
-    "ctaDemo": "Watch Demo"
+    "ctaDemo": "Watch Demo",
+    "modal": {
+      "title": "We are ready to boost your business!",
+      "description": "Thank you for your interest in GOBAI. Complete this short form and a specialist will contact you immediately to start your digital transformation."
+    }
   },
   "CampanasDisruptivas": {
     "hero": {
@@ -134,17 +138,18 @@
     }
   },
   "CasosDeExito": {
+    "backToList": "Back to Success Stories",
     "hero": {
       "title": "Results that Speak for Themselves",
       "subtitle": "Real impact metrics demonstrating the effectiveness of our solutions in digital political transformation.",
-      "stat1": "50+",
-      "stat1Label": "Successful Projects",
-      "stat2": "2M+",
-      "stat2Label": "Citizens Impacted",
-      "stat3": "95%",
-      "stat3Label": "Success Rate",
+      "stat1": "+30",
+      "stat1Label": "projects",
+      "stat2": "+600k",
+      "stat2Label": "citizens",
+      "stat3": "+99%",
+      "stat3Label": "success rate",
       "stat4": "24/7",
-      "stat4Label": "Continuous Support"
+      "stat4Label": "support"
     },
     "projects": {
       "title": "Projects that Make a Difference",
@@ -247,7 +252,17 @@
         "phonePlaceholder": "Name and Surname",
         "message": "Detailed Message*",
         "messagePlaceholder": "Describe your project, objectives and how we can help you transform your digital political strategy...",
-        "submit": "Send Inquiry"
+        "submit": "Send Inquiry",
+        "submitting": "Sending...",
+        "successTitle": "Message Sent!",
+        "success": "Thank you for contacting us. Our team will review your request and get in touch with you as soon as possible.",
+        "error": "There was an error sending your message. Please try again later.",
+        "sendAnother": "Send another message",
+        "validation": {
+          "nameRequired": "Name is required",
+          "emailInvalid": "Invalid email address",
+          "messageRequired": "Message must be at least 10 characters"
+        }
       },
       "image": {
         "tag": "Digital Political Transformation",

@@ -1,14 +1,16 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslations } from 'next-intl';
+import { ContactModal } from '../forms/ContactModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CallToActionSection() {
 	const t = useTranslations('CTA');
+	const tHero = useTranslations('Hero');
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	const subtitleRef = useRef<HTMLHeadingElement>(null);
@@ -16,6 +18,7 @@ export default function CallToActionSection() {
 	const finalTextRef = useRef<HTMLParagraphElement>(null);
 	const ctaButtonRef = useRef<HTMLButtonElement>(null);
 	const backgroundRef = useRef<HTMLDivElement>(null);
+	const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
 	useEffect(() => {
 		const ctx = gsap.context(() => {
@@ -87,7 +90,7 @@ export default function CallToActionSection() {
 						duration: 0.3,
 						ease: 'power2.out',
 					});
-					gsap.to(button.querySelector('.button-glow'), {
+					gsap.to(button.querySelector('.button-glow') as HTMLElement, {
 						opacity: 0.8,
 						scale: 1.2,
 						duration: 0.3,
@@ -101,7 +104,7 @@ export default function CallToActionSection() {
 						duration: 0.3,
 						ease: 'power2.out',
 					});
-					gsap.to(button.querySelector('.button-glow'), {
+					gsap.to(button.querySelector('.button-glow') as HTMLElement, {
 						opacity: 0.4,
 						scale: 1,
 						duration: 0.3,
@@ -256,6 +259,7 @@ export default function CallToActionSection() {
 				<div className="relative inline-block">
 					<button
 						ref={ctaButtonRef}
+						onClick={() => setIsContactModalOpen(true)}
 						className="relative group px-12 py-6 text-2xl font-bold text-white rounded-2xl overflow-hidden cursor-pointer"
 						style={{
 							background: 'linear-gradient(135deg, var(--color-gobai-turquoise-dark) 0%, var(--color-gobai-turquoise) 25%, var(--color-gobai-cyan) 75%, var(--color-gobai-cyan-light) 100%)',
@@ -319,6 +323,14 @@ export default function CallToActionSection() {
 				style={{
 					background: 'linear-gradient(to top, rgba(179, 232, 255, 0.1), transparent)',
 				}}
+			/>
+
+			{/* Contact Modal */}
+			<ContactModal 
+				isOpen={isContactModalOpen} 
+				onOpenChange={setIsContactModalOpen}
+				title={tHero('modal.title')}
+				description={tHero('modal.description')}
 			/>
 		</section>
 	);

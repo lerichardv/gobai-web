@@ -15,6 +15,8 @@ import {
   Bell,
   Menu,
   Globe,
+  Mail,
+  Trophy,
 } from "lucide-react"
 
 import {
@@ -55,6 +57,16 @@ const navItems = [
     title: "Blog",
     href: "/admin/blog",
     icon: Globe,
+  },
+  {
+    title: "Casos de Éxito",
+    href: "/admin/success-cases",
+    icon: Trophy,
+  },
+  {
+    title: "Contactos",
+    href: "/admin/contact",
+    icon: Mail,
   },
 ]
 

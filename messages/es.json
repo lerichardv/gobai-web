@@ -14,7 +14,11 @@
     "title": "Gobernar y liderar mejor Con datos reales",
     "subtitle": "Inteligencia artificial para la incidencia política y <bold>empresarial</bold>",
     "ctaStart": "Comenzar Hoy",
-    "ctaDemo": "Ver Demo"
+    "ctaDemo": "Ver Demo",
+    "modal": {
+      "title": "¡Estamos listos para impulsarte!",
+      "description": "Gracias por tu interés en GOBAI. Completa este breve formulario y un especialista se pondrá en contacto contigo de inmediato para comenzar tu transformación digital."
+    }
   },
   "CampanasDisruptivas": {
     "hero": {
@@ -139,17 +143,18 @@
     }
   },
   "CasosDeExito": {
+    "backToList": "Volver a Casos de Éxito",
     "hero": {
       "title": "Resultados que Hablan por Sí Solos",
       "subtitle": "Métricas reales de impacto que demuestran la efectividad de nuestras soluciones en transformación política digital.",
-      "stat1": "50+",
-      "stat1Label": "Proyectos Exitosos",
-      "stat2": "2M+",
-      "stat2Label": "Ciudadanos Impactados",
-      "stat3": "95%",
-      "stat3Label": "Tasa de Éxito",
+      "stat1": "+30",
+      "stat1Label": "proyectos",
+      "stat2": "+600k",
+      "stat2Label": "ciudadanos",
+      "stat3": "+99%",
+      "stat3Label": "tasa de éxito",
       "stat4": "24/7",
-      "stat4Label": "Soporte Continuo"
+      "stat4Label": "soporte"
     },
     "projects": {
       "title": "Proyectos que Marcan la Diferencia",
@@ -252,7 +257,17 @@
         "phonePlaceholder": "Nombre y Apellido",
         "message": "Mensaje Detallado*",
         "messagePlaceholder": "Descríbanos su proyecto, objetivos y cómo podemos ayudarle a transformar su estrategia política digital...",
-        "submit": "Enviar Consulta"
+        "submit": "Enviar Consulta",
+        "submitting": "Enviando...",
+        "successTitle": "¡Mensaje Enviado!",
+        "success": "Gracias por contactarnos. Nuestro equipo revisará su solicitud y se pondrá en contacto con usted lo antes posible.",
+        "error": "Hubo un error al enviar su mensaje. Por favor, inténtelo de nuevo más tarde.",
+        "sendAnother": "Enviar otro mensaje",
+        "validation": {
+          "nameRequired": "El nombre es obligatorio",
+          "emailInvalid": "Correo electrónico no válido",
+          "messageRequired": "El mensaje debe tener al menos 10 caracteres"
+        }
       },
       "image": {
         "tag": "Transformación Digital Política",

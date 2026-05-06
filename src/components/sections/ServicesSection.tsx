@@ -5,7 +5,8 @@ import { gsap } from 'gsap';
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/all';
 import { RiRobot2Line, RiGovernmentLine, RiNewspaperLine } from '@remixicon/react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,21 +78,24 @@ export default function ServicesSection() {
 			description: t('service1Desc'),
 			icon: <RiRobot2Line size="30px" />,
 			gradient: 'linear-gradient(135deg, var(--color-gobai-cyan-dark) 0%, var(--color-gobai-turquoise) 100%)',
-			image: '/api/placeholder/400/300'
+			image: '/api/placeholder/400/300',
+			href: '/campanas-disruptivas'
 		},
 		{
 			title: t('service2Title'),
 			description: t('service2Desc'),
 			icon: <RiGovernmentLine size="30px" />,
 			gradient: 'linear-gradient(135deg, var(--color-gobai-turquoise-dark) 0%, var(--color-gobai-cyan) 100%)',
-			image: '/api/placeholder/400/300'
+			image: '/api/placeholder/400/300',
+			href: '/gobiernos-politicas'
 		},
 		{
 			title: t('service3Title'),
 			description: t('service3Desc'),
 			icon: <RiNewspaperLine size="30px" />,
 			gradient: 'linear-gradient(135deg, var(--color-gobai-blue-light) 0%, var(--color-gobai-turquoise-light) 100%)',
-			image: '/api/placeholder/400/300'
+			image: '/api/placeholder/400/300',
+			href: '/casos-de-exito'
 		}
 	];
 
@@ -347,30 +351,32 @@ export default function ServicesSection() {
 								</p>
 
 								{/* CTA Button */}
-								<button
-									className="group/btn relative px-6 py-3 bg-white/80 hover:bg-white text-gray-800 font-semibold rounded-full transition-all duration-300 hover:scale-105 border border-gray-200 hover:border-gray-300 shadow-lg hover:shadow-xl"
-									style={{
-										backdropFilter: 'blur(10px)',
-									}}
-								>
-									<span className="relative z-10 flex items-center gap-2">
-										{t('seeMore')}
-										<svg
-											className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
-											fill="none"
-											stroke="currentColor"
-											viewBox="0 0 24 24"
-										>
-											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-										</svg>
-									</span>
+								<Link href={service.href}>
+									<button
+										className="group/btn relative px-6 py-3 bg-white/80 hover:bg-white text-gray-800 font-semibold rounded-full transition-all duration-300 hover:scale-105 border border-gray-200 hover:border-gray-300 shadow-lg hover:shadow-xl"
+										style={{
+											backdropFilter: 'blur(10px)',
+										}}
+									>
+										<span className="relative z-10 flex items-center gap-2">
+											{t('seeMore')}
+											<svg
+												className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
+												fill="none"
+												stroke="currentColor"
+												viewBox="0 0 24 24"
+											>
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+											</svg>
+										</span>
 
-									{/* Button hover effect */}
-									<div
-										className="absolute inset-0 rounded-full opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"
-										style={{ background: service.gradient }}
-									/>
-								</button>
+										{/* Button hover effect */}
+										<div
+											className="absolute inset-0 rounded-full opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"
+											style={{ background: service.gradient }}
+										/>
+									</button>
+								</Link>
 
 								{/* Decorative elements */}
 								<div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
