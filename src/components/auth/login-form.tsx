@@ -155,17 +155,6 @@ export function LoginForm() {
             </form>
           </Form>
         </CardContent>
-        <CardFooter className="flex flex-col space-y-4">
-          <div className="text-sm text-center text-white/60">
-            ¿No tienes una cuenta?{" "}
-            <Link
-              href="/auth/register"
-              className="font-bold text-gobai-cyan hover:text-gobai-cyan-light transition-colors"
-            >
-              Crea una ahora
-            </Link>
-          </div>
-        </CardFooter>
       </Card>
     </div>
   )

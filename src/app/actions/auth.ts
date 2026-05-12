@@ -11,32 +11,5 @@ const registerSchema = z.object({
 })
 
 export async function registerUser(data: z.infer<typeof registerSchema>) {
-  try {
-    const { name, email, password } = registerSchema.parse(data)
-
-    const existingUser = await prisma.user.findUnique({
-      where: { email },
-    })
-
-    if (existingUser) {
-      return { error: "User already exists" }
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10)
-
-    await prisma.user.create({
-      data: {
-        name,
-        email,
-        password: hashedPassword,
-      },
-    })
-
-    return { success: true }
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      return { error: error.issues[0].message }
-    }
-    return { error: "Something went wrong" }
-  }
+  return { error: "Public registration is disabled. Please contact an administrator." }
 }

@@ -1,4 +1,4 @@
-import { RegisterForm } from "@/components/auth/register-form"
+import { redirect } from "next/navigation"
 
 export const metadata = {
   title: "Register | Gobai",
@@ -6,5 +6,5 @@ export const metadata = {
 }
 
 export default function RegisterPage() {
-  return <RegisterForm />
+  redirect("/auth/login")
 }
