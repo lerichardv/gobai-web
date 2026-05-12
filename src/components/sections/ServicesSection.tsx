@@ -253,7 +253,7 @@ export default function ServicesSection() {
 			</div>
 
 			{/* Main Content */}
-			<div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+			<div className="relative z-10 max-w-8xl mx-auto px-6 lg:px-8">
 				{/* Animated Phrase Area */}
 				<div id="animated-phrase-container" className="w-full h-[80vh] flex items-center justify-center mb-10 relative">
 					<h1
