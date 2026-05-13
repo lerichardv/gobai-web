@@ -22,8 +22,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://gobai.la'),
-  title: "GOBAI | Inteligencia Artificial para la Política y Estrategia Digital",
-  description: "Líderes en Inteligencia Artificial para la Política.",
+  title: "GOBAI | Inteligencia Artificial para la inicidencia política y empresarial",
+  description: "Líderes en Inteligencia Artificial para la inicidencia política y empresarial.",
 };
 
 export default async function LocaleLayout({
