@@ -95,11 +95,11 @@ export default function NavigationBar() {
 					{/* Left Navigation Items - Moved Closer to Logo */}
 					<div ref={menuRef} className="flex-1 flex items-center justify-end space-x-6 pr-12">
 						{/* Blog Button with Gradient moved to the start */}
-						<Link 
-							href="/blog" 
+						<Link
+							href="/blog"
 							className="group relative px-6 py-2.5 rounded-full text-sm font-bold text-white transition-all duration-300 hover:scale-105 active:scale-95"
 						>
-							<div 
+							<div
 								className="absolute inset-0 rounded-full bg-gradient-to-r from-gobai-blue-dark via-gobai-turquoise to-gobai-cyan shadow-[0_4px_15px_rgba(31,170,163,0.3)] group-hover:shadow-[0_8px_25px_rgba(31,170,163,0.5)] transition-all duration-300"
 							/>
 							<span className="relative z-10 flex items-center gap-2">
@@ -228,18 +228,18 @@ export default function NavigationBar() {
 								</Link>
 							</div>
 						))}
-						
+
 						{/* Language Picker Moved to the end */}
 						<div className="flex items-center space-x-2 ml-4 p-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-							<Link 
-								href={pathname} 
+							<Link
+								href={pathname}
 								locale="es"
 								className={`px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 ${locale === 'es' ? 'bg-gobai-turquoise text-white shadow-[0_0_10px_rgba(31,170,163,0.5)]' : 'text-white/50 hover:text-white/80'}`}
 							>
 								ES
 							</Link>
-							<Link 
-								href={pathname} 
+							<Link
+								href={pathname}
 								locale="en"
 								className={`px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 ${locale === 'en' ? 'bg-gobai-turquoise text-white shadow-[0_0_10px_rgba(31,170,163,0.5)]' : 'text-white/50 hover:text-white/80'}`}
 							>
@@ -425,16 +425,16 @@ export default function NavigationBar() {
 
 					{/* Mobile Language Picker */}
 					<div className="mt-6 flex justify-center space-x-4">
-						<Link 
-							href={pathname} 
+						<Link
+							href={pathname}
 							locale="es"
 							onClick={() => setIsMobileMenuOpen(false)}
 							className={`px-6 py-2 rounded-xl text-sm font-bold transition-all duration-300 ${locale === 'es' ? 'bg-gobai-turquoise text-white shadow-[0_0_20px_rgba(31,170,163,0.4)]' : 'bg-white/5 text-white/50 border border-white/10'}`}
 						>
 							Español
 						</Link>
-						<Link 
-							href={pathname} 
+						<Link
+							href={pathname}
 							locale="en"
 							onClick={() => setIsMobileMenuOpen(false)}
 							className={`px-6 py-2 rounded-xl text-sm font-bold transition-all duration-300 ${locale === 'en' ? 'bg-gobai-turquoise text-white shadow-[0_0_20px_rgba(31,170,163,0.4)]' : 'bg-white/5 text-white/50 border border-white/10'}`}
@@ -446,8 +446,8 @@ export default function NavigationBar() {
 					{/* Contact Info */}
 					<div className="mt-8 pt-8 border-t border-white/10 text-center">
 						<p className="text-white/60 text-sm mb-2">¿Necesitas ayuda?</p>
-						<a href="mailto:info@gobai.com" className="text-white hover:text-white/80 transition-colors duration-200">
-							info@gobai.com
+						<a href="mailto:info@gobai.la" className="text-white hover:text-white/80 transition-colors duration-200">
+							info@gobai.la
 						</a>
 					</div>
 				</div>

@@ -389,8 +389,8 @@ export default function NavigationBar() {
 					{/* Contact Info */}
 					<div className="mt-8 pt-8 border-t border-white/10 text-center">
 						<p className="text-white/60 text-sm mb-2">¿Necesitas ayuda?</p>
-						<a href="mailto:info@gobai.com" className="text-white hover:text-white/80 transition-colors duration-200">
-							info@gobai.com
+						<a href="mailto:info@gobai.la" className="text-white hover:text-white/80 transition-colors duration-200">
+							info@gobai.la
 						</a>
 					</div>
 				</div>
