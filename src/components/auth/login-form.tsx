@@ -122,7 +122,7 @@ export function LoginForm() {
                     <div className="flex items-center justify-between">
                       <FormLabel className="text-white/80">Contraseña</FormLabel>
                       <Link
-                        href="#"
+                        href="/auth/forgot-password"
                         className="text-sm font-medium text-gobai-cyan hover:text-gobai-cyan-light transition-colors"
                       >
                         ¿Olvidaste tu contraseña?
